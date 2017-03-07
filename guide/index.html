@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Getting Started - Uppy</title>
+    <meta charset="utf-8">
+    <meta name="title" content="Uppy">
+    <meta name="description" content="Almost as cute as a puppy">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@uppy_io">
+    <meta name="twitter:creator" content="@uppy_io">
+    <meta property="og:url" content="http://uppy.io/guide/index.html">
+    <meta property="og:title" content="Getting Started - Uppy">
+    <meta name="twitter:title" content="Getting Started - Uppy">
+    <meta name="description" content="Uppy is (going to be) a JavaScript file uploader that fetches files from Dropbox, Instagram, local disk, remote URLs, and other exciting locations. It has a plugin-based architecture, first-class support for resumable uploads according to the open standard: &lt;a href=&quot;http://tus.io&quot;&gt;tus&lt;/a&gt;, and custom encoding backends, making it extensible and robust. Uppy is in the early stages of development and should not be used for anything serious yet.
+">
+    <meta name="twitter:description" content="Uppy is (going to be) a JavaScript file uploader that fetches files from Dropbox, Instagram, local disk, remote URLs, and other exciting locations. It has a plugin-based architecture, first-class support for resumable uploads according to the open standard: &lt;a href=&quot;http://tus.io&quot;&gt;tus&lt;/a&gt;, and custom encoding backends, making it extensible and robust. Uppy is in the early stages of development and should not be used for anything serious yet.
+">
+    <meta property="og:image" content="/images/uppy-social.jpg">
+    <meta name="twitter:image" content="/images/uppy-social.jpg">
+
+    <link rel="icon" href="/images/logos/uppy-dog-head-arrow.png" type="image/x-icon">
+    <link rel="alternate" type="application/rss+xml" title="Uppy" href="/atom.xml">
+
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto+Mono" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Poiret+One:400" rel="stylesheet">
+    <script>
+      window.PAGE_TYPE = "guide"
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63083-12', 'uppy.io');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body class="page-inner">
+    <div class="page">
+      <header id="header" class="MainHeader js-MainHeader">
+        <button class="MainHeader-menuBtn js-MenuBtn"></button>
+
+        <a id="logo" class="MainLogo" href="/">
+          <img class="MainLogo-img" src="/images/logos/uppy-dog-head-arrow.svg">
+          <span class="MainLogo-text">Uppy</span>
+        </a>
+
+        <nav>
+          <ul id="nav" class="MainMenu">
+            <!-- @todo uncomment search input when we get our own swifttype -->
+<!-- <li>
+  <form id="search-form" class="MainMenu-search">
+    <input type="text" id="search-query" class="MainMenu-searchQuery st-default-search-input">
+  </form>
+</li> -->
+<li><a href="/guide/" class="nav-link current">Guide</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/dashboard/" class="nav-link">Examples</a></li>
+<li><a href="/stats/" class="nav-link">Stats</a></li>
+<li><a href="/blog/" class="nav-link">Blog</a></li>
+<li><a href="https://github.com/transloadit/uppy" class="nav-link">Github</a></li>
+
+          </ul>
+        </nav>
+      </header>
+
+      <main class="MainContent js-MainContent" id="main">
+        
+          
+    <div class="Sidebar js-Sidebar">
+  <ul class="main-menu">
+    <!-- @todo uncomment search input when we get our own swifttype -->
+<!-- <li>
+  <form id="search-form" class="MainMenu-search">
+    <input type="text" id="search-query" class="MainMenu-searchQuery st-default-search-input">
+  </form>
+</li> -->
+<li><a href="/guide/" class="nav-link current">Guide</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/dashboard/" class="nav-link">Examples</a></li>
+<li><a href="/stats/" class="nav-link">Stats</a></li>
+<li><a href="/blog/" class="nav-link">Blog</a></li>
+<li><a href="https://github.com/transloadit/uppy" class="nav-link">Github</a></li>
+
+  </ul>
+  <div class="list">
+    <h2>
+      Guide
+    </h2>
+    <ul class="menu-root">
+      
+        <li>
+          <a href="/stats/index.html" class="sidebar-link">Stats</a>
+        </li>
+      
+        <li>
+          <a href="/guide/index.html" class="sidebar-link current">Getting Started</a>
+        </li>
+      
+        <li>
+          <a href="/guide/faq.html" class="sidebar-link">FAQ</a>
+        </li>
+      
+        <li>
+          <a href="/guide/contributing.html" class="sidebar-link">Contributing Guidelines</a>
+        </li>
+      
+    </ul>
+    <ul class="Social">
+  <li><a href="https://twitter.com/uppy_io" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @uppy_io</a></li>
+  <li><iframe src="https://ghbtns.com/github-btn.html?user=transloadit&repo=uppy&type=watch&count=true"
+allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe></li>
+  <li class="BuildBadge">
+   <span class="wrapper">
+     <a href="https://travis-ci.org/transloadit/uppy"><img src="https://travis-ci.org/transloadit/uppy.svg" alt="Build Status"></a>
+   </span>
+  </li>
+  <li class="SauceBadge">
+   <span class="wrapper">
+     <a href="https://saucelabs.com/u/transloadit-uppy">
+       <img src="https://saucelabs.com/buildstatus/transloadit-uppy" alt="Sauce Test Status"/>
+     </a>
+   </span>
+  </li>
+</ul>
+
+  </div>
+</div>
+
+
+<div class="Content js-Content guide with-sidebar">
+    <h1>Getting Started</h1>
+    <p><em>Uppy is in development, some features are unavailable and things may break.</em></p>
+<h2 id="Installing-from-NPM"><a href="#Installing-from-NPM" class="headerlink" title="Installing from NPM"></a>Installing from NPM</h2><p>NPM is the recommended installation method when building large scale apps with Uppy. It pairs nicely with a CommonJS module bundler such as <a href="http://webpack.github.io/" target="_blank" rel="external">Webpack</a>, <a href="http://browserify.org/" target="_blank" rel="external">Browserify</a> or <a href="http://rollupjs.org/" target="_blank" rel="external">Rollup.js</a>.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ npm install uppy --save</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// ES6</span></div><div class="line"><span class="keyword">import</span> &#123; Core, DragDrop, Tus10 &#125; <span class="keyword">from</span> <span class="string">'uppy'</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> uppy = <span class="keyword">new</span> Core(&#123;<span class="attr">wait</span>: <span class="literal">false</span>&#125;)</div><div class="line"><span class="keyword">const</span> files = uppy</div><div class="line">  .use(DragDrop, &#123;<span class="attr">target</span>: <span class="string">'body'</span>&#125;)</div><div class="line">  .use(Tus10, &#123;<span class="attr">endpoint</span>: <span class="string">'//tusd.tus.io/files'</span>&#125;)</div><div class="line">  .run()</div></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// ES5</span></div><div class="line"><span class="comment">// warning: bundling with `require` will currently include the whole Uppy package, with all plugins.</span></div><div class="line"><span class="comment">// If you want to pick and choose, use `import`</span></div><div class="line"><span class="keyword">var</span> Uppy = <span class="built_in">require</span>(<span class="string">'uppy'</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> uppy = <span class="keyword">new</span> Uppy.Core(&#123;<span class="attr">wait</span>: <span class="literal">false</span>&#125;)</div><div class="line"><span class="keyword">var</span> files = uppy</div><div class="line">  .use(Uppy.DragDrop, &#123;<span class="attr">target</span>: <span class="string">'body'</span>&#125;)</div><div class="line">  .use(Uppy.Tus10, &#123;<span class="attr">endpoint</span>: <span class="string">'//tusd.tus.io/files'</span>&#125;)</div><div class="line">  .run()</div></pre></td></tr></table></figure>
+<p>Add CSS <a href="https://unpkg.com/uppy/dist/uppy.min.css" target="_blank" rel="external">uppy.min.css</a>, either to <code>head</code> of your HTML or include in JS, if your bundler of choice supports it — transforms and plugins are available for Browserify and Webpack.</p>
+<p>Give Uppy a spin <a href="http://requirebin.com/?gist=54e076cccc929cc567cb0aba38815105" target="_blank" rel="external">on RequireBin</a>.</p>
+<h2 id="Installing-from-CDN"><a href="#Installing-from-CDN" class="headerlink" title="Installing from CDN"></a>Installing from CDN</h2><p>But if you like, you can also use a pre-built bundle, for example from <a href="https://unpkg.com/uppy/" target="_blank" rel="external">unpkg CDN</a>. In that case <code>Uppy</code> will attach itself to the global <code>window</code> object.</p>
+<p>1. Add a script to your the bottom of your HTML’s <code>&lt;body&gt;</code>:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/uppy/dist/uppy.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>2. Add CSS to your HTML’s <code>&lt;head&gt;</code>:<br><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"https://unpkg.com/uppy/dist/uppy.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>3. Initialize:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">  <span class="keyword">var</span> uppy = <span class="keyword">new</span> Uppy.Core(&#123;<span class="attr">locales</span>: Uppy.locales.ru_RU, <span class="attr">debug</span>: <span class="literal">true</span>&#125;)</div><div class="line">  uppy.use(Uppy.DragDrop, &#123;<span class="attr">target</span>: <span class="string">'.UppyDragDrop'</span>&#125;)</div><div class="line">  uppy.use(Uppy.Tus10, &#123;<span class="attr">endpoint</span>: <span class="string">'//tusd.tus.io/files/'</span>&#125;)</div><div class="line">  uppy.run()</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p>Check out the <a href="/api">API section</a>.</p>
+<h2 id="Browser-Support"><a href="#Browser-Support" class="headerlink" title="Browser Support"></a>Browser Support</h2><p><a href="https://saucelabs.com/u/transloadit-uppy" target="_blank" rel="external"><br>  <img src="https://saucelabs.com/browser-matrix/transloadit-uppy.svg" alt="Sauce Test Status"><br></a></p>
+<p>Note: we aim to support IE10+ and recent versions of Safari, Edge, Chrome, Firefox and Opera. IE6 on the chart above means we recommend setting Uppy to target a <code>&lt;form&gt;</code> element, so when Uppy has not yet loaded or is not supported, upload still works. Even on the refrigerator browser. Or, yes, IE6.</p>
+
+    
+      <div class="guide-links">
+        
+        
+      </div>
+    
+    <div class="footer">Caught a mistake or want to contribute to the documentation?
+       <a href="https://github.com/transloadit/uppy/blob/master/website/src/guide/index.md" target="_blank">Edit/fork this page directly on Github</a>!
+    </div>
+</div>
+
+        
+      </main>
+
+      
+        <script src="/js/smooth-scroll.min.js"></script>
+      
+      <script src="/js/common.js"></script>
+
+
+      <!-- Twitter follow button script -->
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+      <!--script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+      <script>
+        WebFont.load({
+          google: {
+            families: ['Source Sans Pro:400,600', 'Roboto Mono', 'Poiret One:400']
+          }
+        });
+      </script-->
+    </div>
+  </body>
+</html>

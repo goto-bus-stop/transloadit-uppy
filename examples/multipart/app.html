@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Uppy</title>
+    <meta charset="utf-8">
+    <meta name="title" content="Uppy">
+    <meta name="description" content="Almost as cute as a puppy">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@uppy_io">
+    <meta name="twitter:creator" content="@uppy_io">
+    <meta property="og:url" content="http://uppy.io/examples/multipart/app.html">
+    <meta property="og:title" content="Uppy">
+    <meta name="twitter:title" content="Uppy">
+    <meta name="description" content="Uppy is (going to be) a JavaScript file uploader that fetches files from Dropbox, Instagram, local disk, remote URLs, and other exciting locations. It has a plugin-based architecture, first-class support for resumable uploads according to the open standard: &lt;a href=&quot;http://tus.io&quot;&gt;tus&lt;/a&gt;, and custom encoding backends, making it extensible and robust. Uppy is in the early stages of development and should not be used for anything serious yet.
+">
+    <meta name="twitter:description" content="Uppy is (going to be) a JavaScript file uploader that fetches files from Dropbox, Instagram, local disk, remote URLs, and other exciting locations. It has a plugin-based architecture, first-class support for resumable uploads according to the open standard: &lt;a href=&quot;http://tus.io&quot;&gt;tus&lt;/a&gt;, and custom encoding backends, making it extensible and robust. Uppy is in the early stages of development and should not be used for anything serious yet.
+">
+    <meta property="og:image" content="/images/uppy-social.jpg">
+    <meta name="twitter:image" content="/images/uppy-social.jpg">
+
+    <link rel="icon" href="/images/logos/uppy-dog-head-arrow.png" type="image/x-icon">
+    <link rel="alternate" type="application/rss+xml" title="Uppy" href="/atom.xml">
+
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto+Mono" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Poiret+One:400" rel="stylesheet">
+    <script>
+      window.PAGE_TYPE = ""
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63083-12', 'uppy.io');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body class="page-inner">
+    <div class="page">
+      <header id="header" class="MainHeader js-MainHeader">
+        <button class="MainHeader-menuBtn js-MenuBtn"></button>
+
+        <a id="logo" class="MainLogo" href="/">
+          <img class="MainLogo-img" src="/images/logos/uppy-dog-head-arrow.svg">
+          <span class="MainLogo-text">Uppy</span>
+        </a>
+
+        <nav>
+          <ul id="nav" class="MainMenu">
+            <!-- @todo uncomment search input when we get our own swifttype -->
+<!-- <li>
+  <form id="search-form" class="MainMenu-search">
+    <input type="text" id="search-query" class="MainMenu-searchQuery st-default-search-input">
+  </form>
+</li> -->
+<li><a href="/guide/" class="nav-link">Guide</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/dashboard/" class="nav-link current">Examples</a></li>
+<li><a href="/stats/" class="nav-link">Stats</a></li>
+<li><a href="/blog/" class="nav-link">Blog</a></li>
+<li><a href="https://github.com/transloadit/uppy" class="nav-link">Github</a></li>
+
+          </ul>
+        </nav>
+      </header>
+
+      <main class="MainContent js-MainContent" id="main">
+        
+          
+<div class="Content js-Content ">
+    <h1></h1>
+    <!-- Basic Uppy styles -->
+<link rel="stylesheet" href="/uppy/uppy.min.css">
+
+<div class="UppyForm">
+  <form action="//api2.transloadit.com">
+    <h5>Uppy was not loaded — slow connection, unsupported browser, werid JS error on a page — but upload still works, because HTML is cool like that</h5>
+    <input type="file" name="files[]" multiple>
+    <button type="submit">Dumb Fallback Form Upload</button>
+  </form>
+</div>
+
+    
+    <div class="footer">Caught a mistake or want to contribute to the documentation?
+       <a href="https://github.com/transloadit/uppy/blob/master/website/src/examples/multipart/app.html" target="_blank">Edit/fork this page directly on Github</a>!
+    </div>
+</div>
+
+        
+      </main>
+
+      
+        <script src="/js/smooth-scroll.min.js"></script>
+      
+      <script src="/js/common.js"></script>
+
+
+      <!-- Twitter follow button script -->
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+      <!--script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+      <script>
+        WebFont.load({
+          google: {
+            families: ['Source Sans Pro:400,600', 'Roboto Mono', 'Poiret One:400']
+          }
+        });
+      </script-->
+    </div>
+  </body>
+</html>

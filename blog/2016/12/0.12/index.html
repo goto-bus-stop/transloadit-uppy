@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Uppy 0.12: Responsive. Cancel. Feedback. Refreshed ES6 server - Uppy</title>
+    <meta charset="utf-8">
+    <meta name="title" content="Uppy">
+    <meta name="description" content="Almost as cute as a puppy">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@uppy_io">
+    <meta name="twitter:creator" content="@uppy_io">
+    <meta property="og:url" content="http://uppy.io/blog/2016/12/0.12/index.html">
+    <meta property="og:title" content="Uppy 0.12: Responsive. Cancel. Feedback. Refreshed ES6 server - Uppy">
+    <meta name="twitter:title" content="Uppy 0.12: Responsive. Cancel. Feedback. Refreshed ES6 server - Uppy">
+    <meta name="description" content="Uppy is (going to be) a JavaScript file uploader that fetches files from Dropbox, Instagram, local disk, remote URLs, and other exciting locations. It has a plugin-based architecture, first-class support for resumable uploads according to the open standard: &lt;a href=&quot;http://tus.io&quot;&gt;tus&lt;/a&gt;, and custom encoding backends, making it extensible and robust. Uppy is in the early stages of development and should not be used for anything serious yet.
+">
+    <meta name="twitter:description" content="Uppy is (going to be) a JavaScript file uploader that fetches files from Dropbox, Instagram, local disk, remote URLs, and other exciting locations. It has a plugin-based architecture, first-class support for resumable uploads according to the open standard: &lt;a href=&quot;http://tus.io&quot;&gt;tus&lt;/a&gt;, and custom encoding backends, making it extensible and robust. Uppy is in the early stages of development and should not be used for anything serious yet.
+">
+    <meta property="og:image" content="/images/uppy-social.jpg">
+    <meta name="twitter:image" content="/images/uppy-social.jpg">
+
+    <link rel="icon" href="/images/logos/uppy-dog-head-arrow.png" type="image/x-icon">
+    <link rel="alternate" type="application/rss+xml" title="Uppy" href="/atom.xml">
+
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto+Mono" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Poiret+One:400" rel="stylesheet">
+    <script>
+      window.PAGE_TYPE = ""
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63083-12', 'uppy.io');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body class="page-inner">
+    <div class="page">
+      <header id="header" class="MainHeader js-MainHeader">
+        <button class="MainHeader-menuBtn js-MenuBtn"></button>
+
+        <a id="logo" class="MainLogo" href="/">
+          <img class="MainLogo-img" src="/images/logos/uppy-dog-head-arrow.svg">
+          <span class="MainLogo-text">Uppy</span>
+        </a>
+
+        <nav>
+          <ul id="nav" class="MainMenu">
+            <!-- @todo uncomment search input when we get our own swifttype -->
+<!-- <li>
+  <form id="search-form" class="MainMenu-search">
+    <input type="text" id="search-query" class="MainMenu-searchQuery st-default-search-input">
+  </form>
+</li> -->
+<li><a href="/guide/" class="nav-link">Guide</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/dashboard/" class="nav-link">Examples</a></li>
+<li><a href="/stats/" class="nav-link">Stats</a></li>
+<li><a href="/blog/" class="nav-link current">Blog</a></li>
+<li><a href="https://github.com/transloadit/uppy" class="nav-link">Github</a></li>
+
+          </ul>
+        </nav>
+      </header>
+
+      <main class="MainContent js-MainContent" id="main">
+        
+          <div class="Sidebar js-Sidebar is-blog">
+    <ul class="main-menu">
+        <!-- @todo uncomment search input when we get our own swifttype -->
+<!-- <li>
+  <form id="search-form" class="MainMenu-search">
+    <input type="text" id="search-query" class="MainMenu-searchQuery st-default-search-input">
+  </form>
+</li> -->
+<li><a href="/guide/" class="nav-link">Guide</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/dashboard/" class="nav-link">Examples</a></li>
+<li><a href="/stats/" class="nav-link">Stats</a></li>
+<li><a href="/blog/" class="nav-link current">Blog</a></li>
+<li><a href="https://github.com/transloadit/uppy" class="nav-link">Github</a></li>
+
+    </ul>
+    <div class="list">
+        <h2>
+            Recent Posts
+            <a href="/atom.xml" target="_blank" style="vertical-align: middle; margin-left: 5px">
+                <img src="/images/feed.png" style="width:15px;height:15px">
+            </a>
+        </h2>
+        <ul>
+        
+            <li>
+                <a href="/blog/2017/02/0.14/" class="sidebar-link">Uppy 0.14: Responsive Dashboard, Standalone & Pluggable Server, Dropbox</a>
+            </li>
+        
+            <li>
+                <a href="/blog/2016/12/0.12/" class="sidebar-link current">Uppy 0.12: Responsive. Cancel. Feedback. Refreshed ES6 server</a>
+            </li>
+        
+            <li>
+                <a href="/blog/2016/11/0.11/" class="sidebar-link">Uppy 0.11: StatusBar, research, https and API docs</a>
+            </li>
+        
+            <li>
+                <a href="/blog/2016/09/0.10/" class="sidebar-link">Uppy 0.10: Getting together, the future, Google Drive UI, exposed events</a>
+            </li>
+        
+            <li>
+                <a href="/blog/2016/08/0.9.0/" class="sidebar-link">Uppy 0.9: Making Progress, then pause & resume. Remote file uploads, Informer.</a>
+            </li>
+        
+            <li>
+                <a href="/blog/2016/08/0.8.0/" class="sidebar-link">Uppy version 0.8 released: The Webcam Edition and Meta Data</a>
+            </li>
+        
+            <li>
+                <a href="/blog/2016/07/uppy-begins/" class="sidebar-link">Uppy: let’s teach an old dog some new tricks</a>
+            </li>
+        
+        </ul>
+        <ul class="Social">
+  <li><a href="https://twitter.com/uppy_io" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @uppy_io</a></li>
+  <li><iframe src="https://ghbtns.com/github-btn.html?user=transloadit&repo=uppy&type=watch&count=true"
+allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe></li>
+  <li class="BuildBadge">
+   <span class="wrapper">
+     <a href="https://travis-ci.org/transloadit/uppy"><img src="https://travis-ci.org/transloadit/uppy.svg" alt="Build Status"></a>
+   </span>
+  </li>
+  <li class="SauceBadge">
+   <span class="wrapper">
+     <a href="https://saucelabs.com/u/transloadit-uppy">
+       <img src="https://saucelabs.com/buildstatus/transloadit-uppy" alt="Sauce Test Status"/>
+     </a>
+   </span>
+  </li>
+</ul>
+
+    </div>
+</div>
+
+<div class="Content js-Content with-sidebar">
+  <h1>Uppy 0.12: Responsive. Cancel. Feedback. Refreshed ES6 server</h1>
+  <h4>Dec 7, 2016</h4>
+  <p>Hello! Here’s what’s new in Uppy 0.12.</p>
+<h2 id="Dashboard-local-mode-and-multipart-uploads-support-in-UI"><a href="#Dashboard-local-mode-and-multipart-uploads-support-in-UI" class="headerlink" title="Dashboard: local mode and multipart uploads support in UI"></a>Dashboard: local mode and multipart uploads support in UI</h2><p>Prior to this release, we’ve optimized the Dashboard for usage with multiple “acquire plugins”, say Webcam + Google Drive. But sometimes all you need is “local disk” with drag &amp; drop support, nice file previews and progress. And now the Dashboard UI works great with that use case out of the box. When you don’t add (.use) any acquire plugins, it looks like this:</p>
+<figure class="wide"><img src="/images/blog/0.12/uppy-dashboard-local.jpg"></figure>
+
+<p>Also (prior to this release), we’ve built the Dashboard to work well with <a href="http://tus.io" target="_blank" rel="external">tus resumable uploads</a>. That’s why you can pause and resume individual uploads, as well as all at once. But if you use an endpoint that is not yet ready for the future and upload resumability (here’s <a href="https://github.com/tus/tus-node-server" target="_blank" rel="external">how</a> to <a href="https://github.com/tus/tusd" target="_blank" rel="external">fix that</a>, by the way), the Dashboard UI will show regular “cancel” buttons instead of pause/resume.</p>
+<p>Dashboard is gradually becoming more mobile friendly too, but we’ll be saving some of that stuff for the next release.</p>
+<h2 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h2><p>Uppy server has undergone a quite a few changes, including the build setup:</p>
+<ul>
+<li>We are using ES2015, transpiling to ES5 with Babel.</li>
+<li>Added linting, lint-staged, pre-commit all that good stuff.</li>
+<li>Added <code>npm run release</code> command that publishes releases for us.</li>
+<li>Google Drive is working again on the Uppy Server side.</li>
+<li>Refactoring, error handling and more minor improvements.</li>
+</ul>
+<a id="more"></a>
+<h2 id="And"><a href="#And" class="headerlink" title="And"></a>And</h2><ul>
+<li>The website now features a video demo of Uppy in action, check it out: <a href="http://uppy.io">http://uppy.io</a>.</li>
+<li>Fixed a bug where the Webcam would continue to be active (green light on) even after the picture was taken — all good now.</li>
+<li>Improved import/require support for ES2015 and CommonJS modules. Basically, we don’t recommend ES2015 spread imports as a default option just yet — no tree shaking in Browserify and Webpack 1. Both <code>import DragDrop from &#39;uppy/lib/plugin/DragDrop&#39;</code> and <code>const DragDrop = require(&#39;uppy/lib/plugin/DragDrop&#39;)</code> are now supported. We’ve added <code>add-module-exports</code> babel plugin that replaces <code>export default</code> with <code>module.exports</code> for backwards compatibility.</li>
+<li>Optimized dependencies a little: removed the ones we don’t use, upgraded some that we do.</li>
+</ul>
+<h2 id="Release-Notes"><a href="#Release-Notes" class="headerlink" title="Release Notes"></a>Release Notes</h2><p>Here is the full list of changes for version 0.12:</p>
+<ul>
+<li>meta: write 0.12 release blog post (@arturi)</li>
+<li>core: figure out import/require for core and plugins — just don’t use spread for plugins (@arturi)</li>
+<li>meta: create a demo GIF, showcasing Uppy Dashboard for the main page, like <a href="https://zeit.co/blog/next" target="_blank" rel="external">https://zeit.co/blog/next</a> (@arturi)</li>
+<li>meta: update Readme, update screenshot (@arturi)</li>
+<li>server: add pre-commit and lint-staged (@arturi)</li>
+<li>server: re-do build setup: building at <code>deploy</code> and <code>prepublish</code> when typing <code>npm run release:patch</code> 0.0.1 -&gt; 0.0.2 (@ifedapoolarewaju)</li>
+<li>server: re-do build setup: es6 <code>src</code> -&gt; es5 <code>lib</code> (use plugin packs from Uppy)</li>
+<li>server: re-do build setup: <code>eslint --fix ./src</code> via <a href="http://standardjs.com" target="_blank" rel="external">http://standardjs.com</a> (@ifedapoolarewaju)</li>
+<li>server: re-do build setup: <code>babel-node</code> or <code>babel-require</code> could do realtime transpiling for development (how does that hook in with e.g. <code>nodemon</code>?) (@ifedapoolarewaju)</li>
+<li>server: refacor: remove/reduce file redundancy (@ifedapoolarewaju)</li>
+<li>server: error handling: 404 and 401 error handler (@ifedapoolarewaju)</li>
+<li>server: bug fix: failing google drive (@ifedapoolarewaju)</li>
+<li>webcam: stop using the webcam (green light off) after the picture is taken / tab is hidden (@arturi)</li>
+<li>core: allow usage without <code>new</code>, start renaming <code>Core()</code> to <code>Uppy()</code> in examples (@arturi)</li>
+<li>core: api — consider <a href="https://gist.github.com/yoshuawuyts/b5e5b3e7aacbee85a3e61b8a626709ab" target="_blank" rel="external">Yosh’s feedback and proposals</a>, come up with follow up questions (@arturi)</li>
+<li>dashboard: local mode — no acquire plugins / external services, just DnD. ActionBrowseTagline component (@arturi)</li>
+<li>dashboard: only show pause/resume when tus is used (@arturi)</li>
+<li>dashboard: cancel uploads button for multipart (@arturi)</li>
+<li>dashboard: responsive design — stage 1 (@arturi)</li>
+<li>meta: write 0.11 release blog post (@arturi)</li>
+</ul>
+<p>The Uppy Team</p>
+
+  <div class="PostAuthor">
+    <a href="https://transloadit.com/about/#artur">
+      <img class="PostAuthor-img" src="https://www.gravatar.com/avatar/6ddfaa9427d64ba52bbe021ea5e2ffef?s=200">
+      <h4 class="PostAuthor-name">Artur Paikin</h4>
+      <h5 class="PostAuthor-tagline">Frontend developer and interface designer</h5>
+    </a>
+  </div>
+</div>
+
+        
+      </main>
+
+      
+        <script src="/js/smooth-scroll.min.js"></script>
+      
+      <script src="/js/common.js"></script>
+
+
+      <!-- Twitter follow button script -->
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+      <!--script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+      <script>
+        WebFont.load({
+          google: {
+            families: ['Source Sans Pro:400,600', 'Roboto Mono', 'Poiret One:400']
+          }
+        });
+      </script-->
+    </div>
+  </body>
+</html>

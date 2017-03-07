@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Multipart Uploads - Uppy</title>
+    <meta charset="utf-8">
+    <meta name="title" content="Uppy">
+    <meta name="description" content="Almost as cute as a puppy">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@uppy_io">
+    <meta name="twitter:creator" content="@uppy_io">
+    <meta property="og:url" content="http://uppy.io/examples/multipart/index.html">
+    <meta property="og:title" content="Multipart Uploads - Uppy">
+    <meta name="twitter:title" content="Multipart Uploads - Uppy">
+    <meta name="description" content="Uppy is (going to be) a JavaScript file uploader that fetches files from Dropbox, Instagram, local disk, remote URLs, and other exciting locations. It has a plugin-based architecture, first-class support for resumable uploads according to the open standard: &lt;a href=&quot;http://tus.io&quot;&gt;tus&lt;/a&gt;, and custom encoding backends, making it extensible and robust. Uppy is in the early stages of development and should not be used for anything serious yet.
+">
+    <meta name="twitter:description" content="Uppy is (going to be) a JavaScript file uploader that fetches files from Dropbox, Instagram, local disk, remote URLs, and other exciting locations. It has a plugin-based architecture, first-class support for resumable uploads according to the open standard: &lt;a href=&quot;http://tus.io&quot;&gt;tus&lt;/a&gt;, and custom encoding backends, making it extensible and robust. Uppy is in the early stages of development and should not be used for anything serious yet.
+">
+    <meta property="og:image" content="/images/uppy-social.jpg">
+    <meta name="twitter:image" content="/images/uppy-social.jpg">
+
+    <link rel="icon" href="/images/logos/uppy-dog-head-arrow.png" type="image/x-icon">
+    <link rel="alternate" type="application/rss+xml" title="Uppy" href="/atom.xml">
+
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto+Mono" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Poiret+One:400" rel="stylesheet">
+    <script>
+      window.PAGE_TYPE = "examples"
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63083-12', 'uppy.io');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body class="page-inner">
+    <div class="page">
+      <header id="header" class="MainHeader js-MainHeader">
+        <button class="MainHeader-menuBtn js-MenuBtn"></button>
+
+        <a id="logo" class="MainLogo" href="/">
+          <img class="MainLogo-img" src="/images/logos/uppy-dog-head-arrow.svg">
+          <span class="MainLogo-text">Uppy</span>
+        </a>
+
+        <nav>
+          <ul id="nav" class="MainMenu">
+            <!-- @todo uncomment search input when we get our own swifttype -->
+<!-- <li>
+  <form id="search-form" class="MainMenu-search">
+    <input type="text" id="search-query" class="MainMenu-searchQuery st-default-search-input">
+  </form>
+</li> -->
+<li><a href="/guide/" class="nav-link">Guide</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/dashboard/" class="nav-link current">Examples</a></li>
+<li><a href="/stats/" class="nav-link">Stats</a></li>
+<li><a href="/blog/" class="nav-link">Blog</a></li>
+<li><a href="https://github.com/transloadit/uppy" class="nav-link">Github</a></li>
+
+          </ul>
+        </nav>
+      </header>
+
+      <main class="MainContent js-MainContent" id="main">
+        
+          <div class="Sidebar js-Sidebar">
+  <ul class="main-menu">
+    <!-- @todo uncomment search input when we get our own swifttype -->
+<!-- <li>
+  <form id="search-form" class="MainMenu-search">
+    <input type="text" id="search-query" class="MainMenu-searchQuery st-default-search-input">
+  </form>
+</li> -->
+<li><a href="/guide/" class="nav-link">Guide</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/dashboard/" class="nav-link current">Examples</a></li>
+<li><a href="/stats/" class="nav-link">Stats</a></li>
+<li><a href="/blog/" class="nav-link">Blog</a></li>
+<li><a href="https://github.com/transloadit/uppy" class="nav-link">Github</a></li>
+
+  </ul>
+  <div class="list">
+    <h2>
+      Examples
+    </h2>
+    <ul class="menu-root">
+      
+        <li>
+          <a href="/examples/dashboard/index.html" class="sidebar-link">Dashboard</a>
+        </li>
+      
+        <li>
+          <a href="/examples/bundle/index.html" class="sidebar-link">Bundle</a>
+        </li>
+      
+        <li>
+          <a href="/examples/dragdrop/index.html" class="sidebar-link">Drag and Drop</a>
+        </li>
+      
+        <li>
+          <a href="/examples/drive/index.html" class="sidebar-link">Google Drive</a>
+        </li>
+      
+        <li>
+          <a href="/examples/multipart/index.html" class="sidebar-link current">Multipart Uploads</a>
+        </li>
+      
+        <li>
+          <a href="/examples/i18n/index.html" class="sidebar-link">i18n</a>
+        </li>
+      
+    </ul>
+    <ul class="Social">
+  <li><a href="https://twitter.com/uppy_io" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @uppy_io</a></li>
+  <li><iframe src="https://ghbtns.com/github-btn.html?user=transloadit&repo=uppy&type=watch&count=true"
+allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe></li>
+  <li class="BuildBadge">
+   <span class="wrapper">
+     <a href="https://travis-ci.org/transloadit/uppy"><img src="https://travis-ci.org/transloadit/uppy.svg" alt="Build Status"></a>
+   </span>
+  </li>
+  <li class="SauceBadge">
+   <span class="wrapper">
+     <a href="https://saucelabs.com/u/transloadit-uppy">
+       <img src="https://saucelabs.com/buildstatus/transloadit-uppy" alt="Sauce Test Status"/>
+     </a>
+   </span>
+  </li>
+</ul>
+
+  </div>
+</div>
+
+<div class="Content js-Content examples with-sidebar">
+  <h1>Multipart Uploads Example</h1>
+
+  <p>Hey there stranger! Uppy <img src="/images/emojis/dog.png" width="14" align="absmiddle">
+    is in the early stages of development and the example section
+    is our playground. Things might not yet work, but we're working hard to improve this.</p>
+  <p>We're on a monthly release cycle and our latest version is
+    <a href="https://github.com/transloadit/uppy/blob/master/CHANGELOG.md#0150">v0.15.0</a>,
+    but the example pages reflect the latest work in our master branch. Here's
+    <a href="https://github.com/transloadit/uppy/compare/v0.15.0...master">what changed in master since v0.15.0</a>
+    in terms of commits, while the CHANGELOG
+    provides a higher level view of this things planned for our
+    <a href="https://github.com/transloadit/uppy/blob/master/CHANGELOG.md#next">next release</a>.</p>
+  <p><img src="/images/emojis/ok_hand.png" width="14" align="absmiddle"> Files from the examples are uploaded to our test servers and deleted daily.</p>
+
+  <!-- Add textarea already so it's available immediately for logging.
+  It is later made visible, and moved into the #console-wrapper to position it in layout how
+  you see fit. -->
+
+  <textarea id="console-log" class="Console"></textarea>
+  <script>
+  console.log = (function (old_function, div_log) {
+    return function (text) {
+      old_function(text);
+
+      if (text !== (text + '')) {
+        text = JSON.stringify(text);
+      }
+
+      div_log.value = text + "\n" + div_log.value;
+    };
+  } (console.log.bind(console), document.getElementById("console-log")));
+  </script>
+
+  
+<blockquote><p>Uppy recommends using tus resumable file uploads, but if you want you can also use Multipart (Form) uploads</p>
+</blockquote>
+
+<p>
+  Simple form with a file input, mounted to a fallback &lt;form&gt; container — works even
+  without JavaScript or when something goes wrong (slow connection, JS errors, old browsers):
+</p>
+
+<link rel="stylesheet" href="app.css">
+<!-- Basic Uppy styles -->
+<link rel="stylesheet" href="/uppy/uppy.min.css">
+
+<div class="UppyForm">
+  <form action="//api2.transloadit.com">
+    <h5>Uppy was not loaded — slow connection, unsupported browser, werid JS error on a page — but upload still works, because HTML is cool like that</h5>
+    <input type="file" name="files[]" multiple>
+    <button type="submit">Dumb Fallback Form Upload</button>
+  </form>
+</div>
+
+<script src="app.js"></script>
+
+<hr>
+
+<p id="console-wrapper">
+  Console output (latest logs are at the top): <br>
+</p>
+
+<p>
+  On this page we're using the following HTML snippet:
+</p>
+<figure class="highlight html"><figcaption><span>app.html</span><a href="/examples/multipart/app.html">view raw</a></figcaption><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- Basic Uppy styles --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/uppy/uppy.min.css"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"UppyForm"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"//api2.transloadit.com"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h5</span>&gt;</span>Uppy was not loaded — slow connection, unsupported browser, werid JS error on a page — but upload still works, because HTML is cool like that<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"files[]"</span> <span class="attr">multiple</span>=<span class="string">""</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>Dumb Fallback Form Upload<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<p>
+  Along with this JavaScript:
+</p>
+<figure class="highlight js"><figcaption><span>app.es6</span><a href="/examples/multipart/app.es6">view raw</a></figcaption><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> Uppy = <span class="built_in">require</span>(<span class="string">'../../../../src/core/Core.js'</span>)</div><div class="line"><span class="keyword">const</span> FileInput = <span class="built_in">require</span>(<span class="string">'../../../../src/plugins/FileInput.js'</span>)</div><div class="line"><span class="keyword">const</span> Multipart = <span class="built_in">require</span>(<span class="string">'../../../../src/plugins/Multipart.js'</span>)</div><div class="line"><span class="keyword">const</span> ProgressBar = <span class="built_in">require</span>(<span class="string">'../../../../src/plugins/ProgressBar.js'</span>)</div><div class="line"></div><div class="line"><span class="keyword">const</span> uppy = <span class="keyword">new</span> Uppy({<span class="attr">debug</span>: <span class="literal">true</span>, <span class="attr">autoProceed</span>: <span class="literal">true</span>})</div><div class="line"></div><div class="line">uppy</div><div class="line">  .use(FileInput)</div><div class="line">  .use(Multipart, {</div><div class="line">    <span class="attr">endpoint</span>: <span class="string">'//api2.transloadit.com'</span>,</div><div class="line">    <span class="attr">bundle</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">fieldName</span>: <span class="string">'files[]'</span></div><div class="line">  })</div><div class="line">  <span class="comment">// by default Uppy removes everything inside target container,</span></div><div class="line">  <span class="comment">// but we surely don’t want to do that in the case of body, so replaceTargetContent: false</span></div><div class="line">  .use(ProgressBar, {</div><div class="line">    <span class="attr">target</span>: <span class="string">'body'</span>,</div><div class="line">    <span class="attr">replaceTargetContent</span>: <span class="literal">false</span>,</div><div class="line">    <span class="attr">fixed</span>: <span class="literal">true</span></div><div class="line">  })</div><div class="line">  .run()</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Uppy with Formtag and Multipart is loaded'</span>)</div></pre></td></tr></table></figure>
+
+
+  <script>
+    // #console-log textarea is declared earlier so it's available immediately for logging.
+    // Here it is made visible, and moved into the #console-wrapper, so you can position it in the layout how
+    // you see fit.
+    document.getElementById('console-wrapper').appendChild(document.getElementById('console-log'));
+    document.getElementById('console-log').style.display = 'block';
+  </script>
+
+  <div class="footer">Caught a mistake or want to contribute to the documentation?
+     <a href="https://github.com/transloadit/uppy/blob/master/website/src/examples/multipart/index.ejs" target="_blank">Edit/fork this page directly on Github</a>!
+  </div>
+</div>
+
+        
+      </main>
+
+      
+        <script src="/js/smooth-scroll.min.js"></script>
+      
+      <script src="/js/common.js"></script>
+
+
+      <!-- Twitter follow button script -->
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+      <!--script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+      <script>
+        WebFont.load({
+          google: {
+            families: ['Source Sans Pro:400,600', 'Roboto Mono', 'Poiret One:400']
+          }
+        });
+      </script-->
+    </div>
+  </body>
+</html>

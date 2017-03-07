@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Contributing Guidelines - Uppy</title>
+    <meta charset="utf-8">
+    <meta name="title" content="Uppy">
+    <meta name="description" content="Almost as cute as a puppy">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@uppy_io">
+    <meta name="twitter:creator" content="@uppy_io">
+    <meta property="og:url" content="http://uppy.io/guide/contributing.html">
+    <meta property="og:title" content="Contributing Guidelines - Uppy">
+    <meta name="twitter:title" content="Contributing Guidelines - Uppy">
+    <meta name="description" content="Uppy is (going to be) a JavaScript file uploader that fetches files from Dropbox, Instagram, local disk, remote URLs, and other exciting locations. It has a plugin-based architecture, first-class support for resumable uploads according to the open standard: &lt;a href=&quot;http://tus.io&quot;&gt;tus&lt;/a&gt;, and custom encoding backends, making it extensible and robust. Uppy is in the early stages of development and should not be used for anything serious yet.
+">
+    <meta name="twitter:description" content="Uppy is (going to be) a JavaScript file uploader that fetches files from Dropbox, Instagram, local disk, remote URLs, and other exciting locations. It has a plugin-based architecture, first-class support for resumable uploads according to the open standard: &lt;a href=&quot;http://tus.io&quot;&gt;tus&lt;/a&gt;, and custom encoding backends, making it extensible and robust. Uppy is in the early stages of development and should not be used for anything serious yet.
+">
+    <meta property="og:image" content="/images/uppy-social.jpg">
+    <meta name="twitter:image" content="/images/uppy-social.jpg">
+
+    <link rel="icon" href="/images/logos/uppy-dog-head-arrow.png" type="image/x-icon">
+    <link rel="alternate" type="application/rss+xml" title="Uppy" href="/atom.xml">
+
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto+Mono" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Poiret+One:400" rel="stylesheet">
+    <script>
+      window.PAGE_TYPE = "guide"
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63083-12', 'uppy.io');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body class="page-inner">
+    <div class="page">
+      <header id="header" class="MainHeader js-MainHeader">
+        <button class="MainHeader-menuBtn js-MenuBtn"></button>
+
+        <a id="logo" class="MainLogo" href="/">
+          <img class="MainLogo-img" src="/images/logos/uppy-dog-head-arrow.svg">
+          <span class="MainLogo-text">Uppy</span>
+        </a>
+
+        <nav>
+          <ul id="nav" class="MainMenu">
+            <!-- @todo uncomment search input when we get our own swifttype -->
+<!-- <li>
+  <form id="search-form" class="MainMenu-search">
+    <input type="text" id="search-query" class="MainMenu-searchQuery st-default-search-input">
+  </form>
+</li> -->
+<li><a href="/guide/" class="nav-link current">Guide</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/dashboard/" class="nav-link">Examples</a></li>
+<li><a href="/stats/" class="nav-link">Stats</a></li>
+<li><a href="/blog/" class="nav-link">Blog</a></li>
+<li><a href="https://github.com/transloadit/uppy" class="nav-link">Github</a></li>
+
+          </ul>
+        </nav>
+      </header>
+
+      <main class="MainContent js-MainContent" id="main">
+        
+          
+    <div class="Sidebar js-Sidebar">
+  <ul class="main-menu">
+    <!-- @todo uncomment search input when we get our own swifttype -->
+<!-- <li>
+  <form id="search-form" class="MainMenu-search">
+    <input type="text" id="search-query" class="MainMenu-searchQuery st-default-search-input">
+  </form>
+</li> -->
+<li><a href="/guide/" class="nav-link current">Guide</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/dashboard/" class="nav-link">Examples</a></li>
+<li><a href="/stats/" class="nav-link">Stats</a></li>
+<li><a href="/blog/" class="nav-link">Blog</a></li>
+<li><a href="https://github.com/transloadit/uppy" class="nav-link">Github</a></li>
+
+  </ul>
+  <div class="list">
+    <h2>
+      Guide
+    </h2>
+    <ul class="menu-root">
+      
+        <li>
+          <a href="/stats/index.html" class="sidebar-link">Stats</a>
+        </li>
+      
+        <li>
+          <a href="/guide/index.html" class="sidebar-link">Getting Started</a>
+        </li>
+      
+        <li>
+          <a href="/guide/faq.html" class="sidebar-link">FAQ</a>
+        </li>
+      
+        <li>
+          <a href="/guide/contributing.html" class="sidebar-link current">Contributing Guidelines</a>
+        </li>
+      
+    </ul>
+    <ul class="Social">
+  <li><a href="https://twitter.com/uppy_io" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @uppy_io</a></li>
+  <li><iframe src="https://ghbtns.com/github-btn.html?user=transloadit&repo=uppy&type=watch&count=true"
+allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe></li>
+  <li class="BuildBadge">
+   <span class="wrapper">
+     <a href="https://travis-ci.org/transloadit/uppy"><img src="https://travis-ci.org/transloadit/uppy.svg" alt="Build Status"></a>
+   </span>
+  </li>
+  <li class="SauceBadge">
+   <span class="wrapper">
+     <a href="https://saucelabs.com/u/transloadit-uppy">
+       <img src="https://saucelabs.com/buildstatus/transloadit-uppy" alt="Sauce Test Status"/>
+     </a>
+   </span>
+  </li>
+</ul>
+
+  </div>
+</div>
+
+
+<div class="Content js-Content guide with-sidebar">
+    <h1>Contributing Guidelines</h1>
+    <h2 id="Uppy-Development"><a href="#Uppy-Development" class="headerlink" title="Uppy Development"></a>Uppy Development</h2><p>First clone and install the project:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git <span class="built_in">clone</span> git@github.com:transloadit/uppy.git</div><div class="line"><span class="built_in">cd</span> uppy</div><div class="line">npm install</div></pre></td></tr></table></figure>
+<p>Our website’s examples section is also our playground, read “Website Development”‘s “Local Previews” section to get up and running.</p>
+<h2 id="Website-Development"><a href="#Website-Development" class="headerlink" title="Website Development"></a>Website Development</h2><p>We keep the <a href="http://uppy.io">uppy.io</a> website in <code>./website</code> for so it’s easy to keep docs &amp; code in sync as we’re still iterating at high velocity. For those reading this screaming murder, <a href="https://github.com/hashicorp/terraform/tree/master/website" target="_blank" rel="external">HashiCorp does this</a> for all their projects, and it’s working well for them on a scale vastly more impressive than Uppy’s.</p>
+<p>The site is built with <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>, and Travis automatically deploys this onto GitHub Pages (it overwrites the <code>gh-pages</code> branch with Hexo’s build at every change to <code>master</code>). The content is written in Markdown and located in <code>./website/src</code>. Feel free to fork &amp; hack!  </p>
+<p>Even though bundled in this repo, the website is regarded as a separate project. So it has its own <code>package.json</code> and we aim keep the surface where the two projects interface as small as possible. <code>./website/update.js</code> is called during website builds to inject the Uppy knowledge into the site.</p>
+<h3 id="Local-Previews"><a href="#Local-Previews" class="headerlink" title="Local Previews"></a>Local Previews</h3><p>It’s recommended to exclude <code>./website/public/</code> from your editor if you want efficient searches.</p>
+<p>To install the required node modules, type:<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">npm install &amp;&amp; <span class="built_in">cd</span> website &amp;&amp; npm install &amp;&amp; <span class="built_in">cd</span> ..</div></pre></td></tr></table></figure></p>
+<p>For local previews on <a href="http://127.0.0.1:4000" target="_blank" rel="external">http://127.0.0.1:4000</a> type:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">npm start</div></pre></td></tr></table></figure>
+<p>This will watch the website, as well as Uppy, as the examples, and rebuild everything and refresh your browser as files change.</p>
+<p>Then, to work on e.g. the Multipart example, you’d edit the following files:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">atom src/core/Core.js \</div><div class="line">  src/plugins/Multipart.js \</div><div class="line">  src/plugins/Formtag.js \</div><div class="line">  src/plugins/Plugin.js \</div><div class="line">  website/src/examples/multipart/app.es6</div></pre></td></tr></table></figure>
+<p>And open <a href="http://0.0.0.0:4000/examples/multipart/index.html" target="_blank" rel="external">http://0.0.0.0:4000/examples/multipart/index.html</a> in your webbrowser.</p>
+<h2 id="CSS-Guidelines"><a href="#CSS-Guidelines" class="headerlink" title="CSS Guidelines"></a>CSS Guidelines</h2><p>The CSS standards followed in this project closely resemble those from <a href="https://gist.github.com/fat/a47b882eb5f84293c4ed" target="_blank" rel="external">Medium’s CSS Guidelines</a>. If it’s not mentioned here, follow their guidelines.</p>
+<h3 id="Naming-Conventions"><a href="#Naming-Conventions" class="headerlink" title="Naming Conventions"></a>Naming Conventions</h3><p>This project uses naming conventions adopted from the SUIT CSS framework.<br><a href="https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md" target="_blank" rel="external">Read about them here</a>.</p>
+<p>To quickly summarize:</p>
+<h4 id="Utilities"><a href="#Utilities" class="headerlink" title="Utilities"></a>Utilities</h4><p>Syntax: u-[sm-|md-|lg-]<utilityname></utilityname></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.u-utilityName</span></div><div class="line"><span class="selector-class">.u-floatLeft</span></div><div class="line"><span class="selector-class">.u-lg-col6</span></div></pre></td></tr></table></figure>
+<h4 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h4><p>Syntax: [<namespace>-]<componentname>[-descendentName][–modifierName]</componentname></namespace></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.twt-Button</span> <span class="comment">/* Namespaced component */</span></div><div class="line"><span class="selector-class">.MyComponent</span> <span class="comment">/* Components pascal cased */</span></div><div class="line"><span class="selector-class">.Button--default</span> <span class="comment">/* Modified button style */</span></div><div class="line"><span class="selector-class">.Button--large</span></div><div class="line"></div><div class="line"><span class="selector-class">.Tweet</span></div><div class="line"><span class="selector-class">.Tweet-header</span> <span class="comment">/* Descendents */</span></div><div class="line"><span class="selector-class">.Tweet-bodyText</span></div><div class="line"></div><div class="line"><span class="selector-class">.Accordion</span><span class="selector-class">.is-collapsed</span> <span class="comment">/* State of component */</span></div><div class="line"><span class="selector-class">.Accordion</span><span class="selector-class">.is-expanded</span></div></pre></td></tr></table></figure>
+<h3 id="SASS"><a href="#SASS" class="headerlink" title="SASS"></a>SASS</h3><p>This project uses SASS, with some limitations on nesting.  One-level deep nesting is allowed, but nesting may not extend a selector by using the <code>&amp;</code> operator.  For example:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">/* BAD */</div><div class="line">.Button &#123;</div><div class="line">  &amp;--disabled &#123;</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* GOOD */</div><div class="line">.Button &#123;</div><div class="line">  ...</div><div class="line">&#125;</div><div class="line"></div><div class="line">.Button--disabled &#123;</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Mobile-first-Responsive-Approach"><a href="#Mobile-first-Responsive-Approach" class="headerlink" title="Mobile-first Responsive Approach"></a>Mobile-first Responsive Approach</h3><p>Style to the mobile breakpoint with your selectors, then use <code>min-width</code> media queries to add any styles to the tablet or desktop breakpoints.</p>
+<h3 id="Selector-Rule-Ordering"><a href="#Selector-Rule-Ordering" class="headerlink" title="Selector, Rule Ordering"></a>Selector, Rule Ordering</h3><ul>
+<li>All selectors are sorted alphabetically and by type.</li>
+<li>HTML elements go above classes and IDs in a file.</li>
+<li>Rules are sorted alphabetically.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">/* BAD */</div><div class="line">.wrapper &#123;</div><div class="line">  width: 940px;</div><div class="line">  margin: auto;</div><div class="line">&#125;</div><div class="line"></div><div class="line">h1 &#123;</div><div class="line">  color: red;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.article &#123;</div><div class="line">  width: 100%;</div><div class="line">  padding: 32px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* GOOD */</div><div class="line">h1 &#123;</div><div class="line">  color: red;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.article &#123;</div><div class="line">  padding: 32px;</div><div class="line">  width: 100%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.wrapper &#123;</div><div class="line">  margin: auto;</div><div class="line">  width: 940px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+    
+      <div class="guide-links">
+        
+          <span>← <a href="/guide/faq.html">FAQ</a></span>
+        
+        
+      </div>
+    
+    <div class="footer">Caught a mistake or want to contribute to the documentation?
+       <a href="https://github.com/transloadit/uppy/blob/master/website/src/guide/contributing.md" target="_blank">Edit/fork this page directly on Github</a>!
+    </div>
+</div>
+
+        
+      </main>
+
+      
+        <script src="/js/smooth-scroll.min.js"></script>
+      
+      <script src="/js/common.js"></script>
+
+
+      <!-- Twitter follow button script -->
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+      <!--script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+      <script>
+        WebFont.load({
+          google: {
+            families: ['Source Sans Pro:400,600', 'Roboto Mono', 'Poiret One:400']
+          }
+        });
+      </script-->
+    </div>
+  </body>
+</html>

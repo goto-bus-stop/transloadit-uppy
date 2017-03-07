@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Uppy</title>
+  <subtitle>Almost as cute as a puppy</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://uppy.io/"/>
+  <updated>2017-03-07T15:46:52.643Z</updated>
+  <id>http://uppy.io/</id>
+  
+  <author>
+    <name>Transloadit</name>
+    <email>uppybot@uppy.io</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Uppy 0.14: Responsive Dashboard, Standalone &amp; Pluggable Server, Dropbox</title>
+    <link href="http://uppy.io/blog/2017/02/0.14/"/>
+    <id>http://uppy.io/blog/2017/02/0.14/</id>
+    <published>2017-02-13T00:00:00.000Z</published>
+    <updated>2017-03-07T15:46:52.643Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hi! Hope y’all have had great holidays! 🎄 Which reminds us, we still have a gift for you — and we even wrapped it in a package (npm). Look inside and you’ll find that Uppy 0.14!</p>
+<p>“But wait”, you might ask, “where is the 0.13 release that we have been waiting for?”</p>
+<p>Well, let’s just say we are superstitious like that. You won’t see us coding under any ladders either! And we were also in the middle of the holiday season, so we decided to call 0.13 “The Release That Wasn’t” and skip it.</p>
+<p>Let’s take a look at what Uppy 0.14 has in store for you.</p>
+<a id="more"></a>
+<h2 id="Major-Uppy-Server-Updates"><a href="#Major-Uppy-Server-Updates" class="headerlink" title="Major Uppy Server Updates"></a>Major Uppy Server Updates</h2><p><strong>Express.js</strong><br>We’ve switched to Express from Koa. It’s more widely adopted and supported, has larger community and better maintained packages, so we went for it.</p>
+<p><strong>Pluggable or standalone</strong><br>Uppy Server can now be plugged into your existing Express/Koa server app, but you can also still run it as a standalone server. <a href="https://github.com/transloadit/uppy-server#run-as-standalone-server" target="_blank" rel="external">See here</a> for further instructions.</p>
+<p><strong>Smooth authentication</strong><br>It used to be the case that when you clicked that stylish “authenticate” [with Google Drive] button, you were taken away from the page, and things tended to get lost. That has now all been made silky smooth: upon clicking the button, a fresh tab will open in your browser, which will take you to the authentication page – be it on Google Drive, Dropbox, or somewhere else. When you are done, this tab is automagically closed, and you are back where you were, authenticated, with all your remote files at hand.</p>
+<p><img class="border" src="/images/blog/0.14/smooth-auth.png"></p>
+<p><strong>Dropbox plugin</strong><br>Dropbox support made it into Uppy this release! 🎉 <a href="https://github.com/ifedapoolarewaju" target="_blank" rel="external">Ife</a> rocks like that. (A shoutout here as well to <a href="https://github.com/hedgerh" target="_blank" rel="external">Harry</a> for the initial work on Uppy Server and the Google Drive plugin!) Why don’t you <a href="https://uppy.io/examples/dashboard/">give it a try</a>!</p>
+<p><img class="border" src="/images/blog/0.14/uppy-dropbox.png"></p>
+<p>What’s more, the client-side code of Google Drive and Dropbox plugins is slowly being refactored into a generic provider view that can be shared among all services.</p>
+<h2 id="Dashboard"><a href="#Dashboard" class="headerlink" title="Dashboard"></a>Dashboard</h2><p><strong>Responsive UI and more icons</strong><br>The Dashboard now adapts itself to screen sizes big and small. That includes <code>inline</code> mode, where you can set <code>maxWidth</code> and <code>maxHeight</code> in options, like so:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">uppy.use(Dashboard, &#123;</div><div class="line">  <span class="attr">maxWidth</span>: <span class="number">300</span>,</div><div class="line">  <span class="attr">maxHeight</span>: <span class="number">350</span>,</div><div class="line">  <span class="attr">inline</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">target</span>: <span class="string">'#myUploadContainer'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>We are not using media queries here, but have instead added a <code>UppyDashboard--wide</code> CSS class, which allows for more flexibility — your file uploading widget can be tiny even if the screen is large.</p>
+<p>When there is little space available, the file grid view that you have become used to, will turn into a new compact list view.</p>
+<figure class="wide"><img src="/images/blog/0.14/dashboard-grid-list.jpg"></figure>
+
+<p>We are also adding more file type icons and trying to be smarter about detecting them. We have new icons for video, audio, text, and PDF for you to enjoy.</p>
+<p><strong>Total / uploaded sizes</strong><br>Total and uploaded sizes have been added to the StatusBar, allowing you and your users to keep track of all those bits and bytes.</p>
+<p><img src="/images/blog/0.14/statusbar-uploaded-total-size.png"></p>
+<p>You can play with all of these new features on <a href="https://uppy.io/examples/dashboard/">the Dashboard example page</a>.</p>
+<!-- more -->
+<h2 id="Per-plugin-locale-settings"><a href="#Per-plugin-locale-settings" class="headerlink" title="Per plugin locale settings"></a>Per plugin locale settings</h2><p>We have moved locale settings from global/core to plugins. By default, each UI plugin ships with an English locale, and you can override any string with your own, like so:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">uppy.use(DragDrop, &#123;<span class="attr">target</span>: <span class="string">'.drop'</span>, <span class="attr">locale</span>: &#123;</div><div class="line">  <span class="attr">strings</span>: &#123;</div><div class="line">    <span class="attr">chooseFile</span>: <span class="string">'Valitse tiedoston'</span>,</div><div class="line">    <span class="attr">orDragDrop</span>: <span class="string">'tai siirtää tänne'</span>,</div><div class="line">  &#125;</div><div class="line">&#125;&#125;)</div></pre></td></tr></table></figure>
+<p><img src="/images/blog/0.14/dnd-fi.png"></p>
+<p>And just like that, your Drag&amp;Drop plugin now speaks Finnish! <em>Hyvää huomenta!</em> This feature is a work in progress, we are trying to find the sweet spot between <a href="https://github.com/transloadit/uppy/blob/8c6252933813af69c1b71ec4621a7fc14dfb3ab0/src/locales/pt_BR.js" target="_blank" rel="external">bundling a whole bunch of strings in packs</a>, which might be redundant (i.e. if you only use the Drag&amp;Drop, you don’t need strings from the Dashboard), and making you choose or set language strings for each UI plugin. We’d love to <a href="https://github.com/transloadit/uppy/issues/42" target="_blank" rel="external">hear what you think</a>.</p>
+<h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h2><ul>
+<li><a href="https://www.npmjs.com/package/yo-yoify" target="_blank" rel="external">yo-yoify</a> has been added to our build setup in order to solve a <a href="https://github.com/shama/bel#note" target="_blank" rel="external">Function.caller / strict mode issue</a> and to make the app faster/smaller by transforming template strings into pure and fast document calls.</li>
+<li>By the way, Uppy’s UI DOM is powered by <a href="https://www.npmjs.com/package/yo-yo" target="_blank" rel="external">yo-yo</a>. We like yo-yo for its simplicity, speed and small size, but sometimes there are issues, one of them being the lack of wide adoption. We are looking at <a href="https://preactjs.com/" target="_blank" rel="external">Preact</a>, but are also quite excited about <a href="https://github.com/yoshuawuyts/nanocomponent" target="_blank" rel="external">Nanocomponent</a>.</li>
+<li>Progress events that were not being properly sent from Uppy Server as now fixed. As it turns out, this occurred because server uploads were happening too fast, before the client was actually able to connect to the server. :scream: Guess that’s a good problem to have solved!</li>
+<li>We have recently added Uppy to <a href="https://www.producthunt.com/posts/uppy" target="_blank" rel="external">Product Hunt</a> and we were very pleased with the warm welcome, we even made it to the front page a few days later. Let’s hope it will help get more people excited about the project.</li>
+</ul>
+<h2 id="Release-Notes"><a href="#Release-Notes" class="headerlink" title="Release Notes"></a>Release Notes</h2><p>Here is the full list of changes for version 0.14:</p>
+<ul>
+<li>dashboard: use <code>isWide</code> prop/class instead of media queries, so that compact/mobile version can be used in bigger screens too (@arturi)</li>
+<li>dashboard: basic “list” view in addition to current “grid” view (@arturi)</li>
+<li>dashboard: more icons for file types (@arturi)</li>
+<li>dashboard: add totalSize and totalUploadedSize to StatusBar (@arturi)</li>
+<li>dashboard: figure out where to place Informer, accounting for StatusBar — over the StatusBar for now (@arturi)</li>
+<li>dashboard: add <code>&lt;progress&gt;</code> element for progress bar, like here <a href="https://overcast.fm/+BtuxMygVg/" target="_blank" rel="external">https://overcast.fm/+BtuxMygVg/</a>. Added hidden for now, for semantics/accessibility (@arturi)</li>
+<li>dragdrop: show number of selected files, remove upload btn (@arturi)</li>
+<li>build: exclude locales from build (@arturi)</li>
+<li>core: i18n for each plugin in options — local instead of global (@arturi)</li>
+<li>core: add default pluralization (can be overridden in plugin options) to Translator (@arturi)</li>
+<li>core: use yo-yoify to solve <a href="https://github.com/shama/bel#note" target="_blank" rel="external">Function.caller / strict mode issue</a> and make our app faster/smaller by transforming template strings into pure and fast document calls (@arturi)</li>
+<li>server: a pluggable uppy-server (express / koa for now) (@ifedapoolarewaju)</li>
+<li>server: standalone uppy-server (@ifedapoolarewaju)</li>
+<li>server: Integrate dropbox plugin (@ifedapoolarewaju)</li>
+<li>server: smooth authentication: after auth you are back in your app where you left, no page reloads (@ifedapoolarewaju)</li>
+<li>tus: fix upload progress from uppy-server (@arturi, @ifedapoolarewaju)</li>
+<li>core: basic React component — DnD (@arturi)</li>
+<li>core: fix support for both ES6 module import and CommonJS requires with <code>add-module-exports</code> babel plugin (@arturi)</li>
+</ul>
+<h2 id="Feedback"><a href="#Feedback" class="headerlink" title="Feedback"></a>Feedback</h2><p>We appreciate your feedback, feel free to <a href="https://github.com/transloadit/uppy/issues/" target="_blank" rel="external">comment on GitHub</a>, send a PR, and hit us on <a href="https://twitter.com/uppy_io" target="_blank" rel="external">twitter</a>.</p>
+<p>The Uppy Team</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hi! Hope y’all have had great holidays! 🎄 Which reminds us, we still have a gift for you — and we even wrapped it in a package (npm). Look inside and you’ll find that Uppy 0.14!&lt;/p&gt;
+&lt;p&gt;“But wait”, you might ask, “where is the 0.13 release that we have been waiting for?”&lt;/p&gt;
+&lt;p&gt;Well, let’s just say we are superstitious like that. You won’t see us coding under any ladders either! And we were also in the middle of the holiday season, so we decided to call 0.13 “The Release That Wasn’t” and skip it.&lt;/p&gt;
+&lt;p&gt;Let’s take a look at what Uppy 0.14 has in store for you.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Uppy 0.12: Responsive. Cancel. Feedback. Refreshed ES6 server</title>
+    <link href="http://uppy.io/blog/2016/12/0.12/"/>
+    <id>http://uppy.io/blog/2016/12/0.12/</id>
+    <published>2016-12-07T00:00:00.000Z</published>
+    <updated>2017-03-07T15:46:52.643Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hello! Here’s what’s new in Uppy 0.12.</p>
+<h2 id="Dashboard-local-mode-and-multipart-uploads-support-in-UI"><a href="#Dashboard-local-mode-and-multipart-uploads-support-in-UI" class="headerlink" title="Dashboard: local mode and multipart uploads support in UI"></a>Dashboard: local mode and multipart uploads support in UI</h2><p>Prior to this release, we’ve optimized the Dashboard for usage with multiple “acquire plugins”, say Webcam + Google Drive. But sometimes all you need is “local disk” with drag &amp; drop support, nice file previews and progress. And now the Dashboard UI works great with that use case out of the box. When you don’t add (.use) any acquire plugins, it looks like this:</p>
+<figure class="wide"><img src="/images/blog/0.12/uppy-dashboard-local.jpg"></figure>
+
+<p>Also (prior to this release), we’ve built the Dashboard to work well with <a href="http://tus.io" target="_blank" rel="external">tus resumable uploads</a>. That’s why you can pause and resume individual uploads, as well as all at once. But if you use an endpoint that is not yet ready for the future and upload resumability (here’s <a href="https://github.com/tus/tus-node-server" target="_blank" rel="external">how</a> to <a href="https://github.com/tus/tusd" target="_blank" rel="external">fix that</a>, by the way), the Dashboard UI will show regular “cancel” buttons instead of pause/resume.</p>
+<p>Dashboard is gradually becoming more mobile friendly too, but we’ll be saving some of that stuff for the next release.</p>
+<h2 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h2><p>Uppy server has undergone a quite a few changes, including the build setup:</p>
+<ul>
+<li>We are using ES2015, transpiling to ES5 with Babel.</li>
+<li>Added linting, lint-staged, pre-commit all that good stuff.</li>
+<li>Added <code>npm run release</code> command that publishes releases for us.</li>
+<li>Google Drive is working again on the Uppy Server side.</li>
+<li>Refactoring, error handling and more minor improvements.</li>
+</ul>
+<a id="more"></a>
+<h2 id="And"><a href="#And" class="headerlink" title="And"></a>And</h2><ul>
+<li>The website now features a video demo of Uppy in action, check it out: <a href="http://uppy.io">http://uppy.io</a>.</li>
+<li>Fixed a bug where the Webcam would continue to be active (green light on) even after the picture was taken — all good now.</li>
+<li>Improved import/require support for ES2015 and CommonJS modules. Basically, we don’t recommend ES2015 spread imports as a default option just yet — no tree shaking in Browserify and Webpack 1. Both <code>import DragDrop from &#39;uppy/lib/plugin/DragDrop&#39;</code> and <code>const DragDrop = require(&#39;uppy/lib/plugin/DragDrop&#39;)</code> are now supported. We’ve added <code>add-module-exports</code> babel plugin that replaces <code>export default</code> with <code>module.exports</code> for backwards compatibility.</li>
+<li>Optimized dependencies a little: removed the ones we don’t use, upgraded some that we do.</li>
+</ul>
+<h2 id="Release-Notes"><a href="#Release-Notes" class="headerlink" title="Release Notes"></a>Release Notes</h2><p>Here is the full list of changes for version 0.12:</p>
+<ul>
+<li>meta: write 0.12 release blog post (@arturi)</li>
+<li>core: figure out import/require for core and plugins — just don’t use spread for plugins (@arturi)</li>
+<li>meta: create a demo GIF, showcasing Uppy Dashboard for the main page, like <a href="https://zeit.co/blog/next" target="_blank" rel="external">https://zeit.co/blog/next</a> (@arturi)</li>
+<li>meta: update Readme, update screenshot (@arturi)</li>
+<li>server: add pre-commit and lint-staged (@arturi)</li>
+<li>server: re-do build setup: building at <code>deploy</code> and <code>prepublish</code> when typing <code>npm run release:patch</code> 0.0.1 -&gt; 0.0.2 (@ifedapoolarewaju)</li>
+<li>server: re-do build setup: es6 <code>src</code> -&gt; es5 <code>lib</code> (use plugin packs from Uppy)</li>
+<li>server: re-do build setup: <code>eslint --fix ./src</code> via <a href="http://standardjs.com" target="_blank" rel="external">http://standardjs.com</a> (@ifedapoolarewaju)</li>
+<li>server: re-do build setup: <code>babel-node</code> or <code>babel-require</code> could do realtime transpiling for development (how does that hook in with e.g. <code>nodemon</code>?) (@ifedapoolarewaju)</li>
+<li>server: refacor: remove/reduce file redundancy (@ifedapoolarewaju)</li>
+<li>server: error handling: 404 and 401 error handler (@ifedapoolarewaju)</li>
+<li>server: bug fix: failing google drive (@ifedapoolarewaju)</li>
+<li>webcam: stop using the webcam (green light off) after the picture is taken / tab is hidden (@arturi)</li>
+<li>core: allow usage without <code>new</code>, start renaming <code>Core()</code> to <code>Uppy()</code> in examples (@arturi)</li>
+<li>core: api — consider <a href="https://gist.github.com/yoshuawuyts/b5e5b3e7aacbee85a3e61b8a626709ab" target="_blank" rel="external">Yosh’s feedback and proposals</a>, come up with follow up questions (@arturi)</li>
+<li>dashboard: local mode — no acquire plugins / external services, just DnD. ActionBrowseTagline component (@arturi)</li>
+<li>dashboard: only show pause/resume when tus is used (@arturi)</li>
+<li>dashboard: cancel uploads button for multipart (@arturi)</li>
+<li>dashboard: responsive design — stage 1 (@arturi)</li>
+<li>meta: write 0.11 release blog post (@arturi)</li>
+</ul>
+<p>The Uppy Team</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hello! Here’s what’s new in Uppy 0.12.&lt;/p&gt;
+&lt;h2 id=&quot;Dashboard-local-mode-and-multipart-uploads-support-in-UI&quot;&gt;&lt;a href=&quot;#Dashboard-local-mode-and-multipart-uploads-support-in-UI&quot; class=&quot;headerlink&quot; title=&quot;Dashboard: local mode and multipart uploads support in UI&quot;&gt;&lt;/a&gt;Dashboard: local mode and multipart uploads support in UI&lt;/h2&gt;&lt;p&gt;Prior to this release, we’ve optimized the Dashboard for usage with multiple “acquire plugins”, say Webcam + Google Drive. But sometimes all you need is “local disk” with drag &amp;amp; drop support, nice file previews and progress. And now the Dashboard UI works great with that use case out of the box. When you don’t add (.use) any acquire plugins, it looks like this:&lt;/p&gt;
+&lt;figure class=&quot;wide&quot;&gt;&lt;img src=&quot;/images/blog/0.12/uppy-dashboard-local.jpg&quot;&gt;&lt;/figure&gt;
+
+&lt;p&gt;Also (prior to this release), we’ve built the Dashboard to work well with &lt;a href=&quot;http://tus.io&quot;&gt;tus resumable uploads&lt;/a&gt;. That’s why you can pause and resume individual uploads, as well as all at once. But if you use an endpoint that is not yet ready for the future and upload resumability (here’s &lt;a href=&quot;https://github.com/tus/tus-node-server&quot;&gt;how&lt;/a&gt; to &lt;a href=&quot;https://github.com/tus/tusd&quot;&gt;fix that&lt;/a&gt;, by the way), the Dashboard UI will show regular “cancel” buttons instead of pause/resume.&lt;/p&gt;
+&lt;p&gt;Dashboard is gradually becoming more mobile friendly too, but we’ll be saving some of that stuff for the next release.&lt;/p&gt;
+&lt;h2 id=&quot;Server&quot;&gt;&lt;a href=&quot;#Server&quot; class=&quot;headerlink&quot; title=&quot;Server&quot;&gt;&lt;/a&gt;Server&lt;/h2&gt;&lt;p&gt;Uppy server has undergone a quite a few changes, including the build setup:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We are using ES2015, transpiling to ES5 with Babel.&lt;/li&gt;
+&lt;li&gt;Added linting, lint-staged, pre-commit all that good stuff.&lt;/li&gt;
+&lt;li&gt;Added &lt;code&gt;npm run release&lt;/code&gt; command that publishes releases for us.&lt;/li&gt;
+&lt;li&gt;Google Drive is working again on the Uppy Server side.&lt;/li&gt;
+&lt;li&gt;Refactoring, error handling and more minor improvements.&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Uppy 0.11: StatusBar, research, https and API docs</title>
+    <link href="http://uppy.io/blog/2016/11/0.11/"/>
+    <id>http://uppy.io/blog/2016/11/0.11/</id>
+    <published>2016-11-15T00:00:00.000Z</published>
+    <updated>2017-03-07T15:46:52.643Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hey everyone! It has been a while since we last shared some news about our progress and we can’t wait to let you know what’s up(py)!</p>
+<p>In October, we have been working hard to get Uppy 0.11 ready for release. This entailed, among other things, doing a write-up of our general architecture, bringing in a friend to look at what we’ve been up to, experimenting with Redux, and updating the Dashboard UI and website example.</p>
+<p>Here’s what we have been up to, in some more detail.</p>
+<a id="more"></a>
+<h2 id="More-research-and-experiments"><a href="#More-research-and-experiments" class="headerlink" title="More research and experiments"></a>More research and experiments</h2><ul>
+<li>We wrote an <a href="https://github.com/transloadit/uppy/blob/master/ARCHITECTURE.md" target="_blank" rel="external">ARCHITECTURE.md</a> document, describing our architecture and APIs.</li>
+<li>Author of <a href="https://github.com/yoshuawuyts/choo" target="_blank" rel="external">Choo</a>, Yoshua Wuyts, was invited to take a look at the state of things in Uppy, and he came up with a proposal for some changes, which we’ll be considering in the coming releases.</li>
+<li>We also conducted a few Redux experiments on Uppy, in the process of which, no animals were hurt. :dog:</li>
+</ul>
+<h2 id="Dashboard-example-features-StatusBar-and-updated-UI"><a href="#Dashboard-example-features-StatusBar-and-updated-UI" class="headerlink" title="Dashboard: example features, StatusBar and updated UI"></a>Dashboard: example features, StatusBar and updated UI</h2><p><strong>Dashboard example</strong> <a href="https://uppy.io/examples/dashboard/">on our website</a> now features several options:</p>
+<ul>
+<li>switchting between “inline” and “modal dialog / popup” mode;</li>
+<li>toggling the <code>autoProceed</code> option that starts uploads automatically, without waiting for a click on the “upload” button;</li>
+<li>enabling/disabling acquire plugins, like Google Drive and Webcam.</li>
+</ul>
+<p><img src="/images/blog/0.11/dashboard-example-options.png"></p>
+<p><strong>StatusBar</strong> is a – you guessed it – bar that appears on the bottom of the Dashboard and unifies progress with pause/resume buttons.</p>
+<p><strong>Dashboard UI</strong> has undergone minor improvements, such as: a new “drag files here” icon and tagline. Furthermore, the text before “acquire” icons on the top — Local Disk, Google Drive, Webcam — has been removed (it used to say “Import files from:”). We also added new “remove file” icons. You know, small things, big difference. :sunglasses:</p>
+<p><img src="/images/blog/0.11/uppy-dashboard-oct-2016-1.jpg" alt="Dashboard UI, no files. Text: Drop files here, paste or import from one of the locations above"></p>
+<p><img src="/images/blog/0.11/uppy-dashboard-oct-2016-2.jpg" alt="Dashboard UI, file upload in progress. StatusBar with pause/resume button and progress"></p>
+<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><p>We have upgraded both <a href="http://uppy.io/">uppy.io</a> and <a href="http://tus.io/" target="_blank" rel="external">tus.io</a> to support HTTPS with Let’s Encrypt. This will ensure that webcam example now works, secure uploads work, and – hopefully – that all will be well.</p>
+<h2 id="And-more"><a href="#And-more" class="headerlink" title="And more"></a>And more</h2><ul>
+<li>We have renamed FormTag plugin to FileInput and made it pretty by default, with an added option to just show the default browser “choose file”.</li>
+<li><a href="https://github.com/transloadit/uppy/issues/126" target="_blank" rel="external">Fixed a bug</a> with <code>autoProceed: true</code> duplicating uploads.</li>
+<li>Refactored Dashboard to only keep active acquire panel in DOM.</li>
+<li>Added PersistentState plugin that saves state to localStorage — which is useful for development.</li>
+<li><a href="https://github.com/transloadit/uppy/pull/131" target="_blank" rel="external">Grand refactor of Uppy Server</a> with dynamic controllers.</li>
+<li>Webcam stream no longer flashes when state is updated.</li>
+</ul>
+<h2 id="Release-Notes"><a href="#Release-Notes" class="headerlink" title="Release Notes"></a>Release Notes</h2><p>Here is the full list of changes for version 0.11:</p>
+<ul>
+<li>core: log method should have an option to throw error in addition to just logging (@arturi)</li>
+<li>experimental: PersistentState plugin that saves state to localStorage — useful for development (@arturi)</li>
+<li>dashboard: implement new StatusBar with progress and pause/resume buttons <a href="https://github.com/transloadit/uppy/issues/96#issuecomment-249401532" target="_blank" rel="external">https://github.com/transloadit/uppy/issues/96#issuecomment-249401532</a> (@arturi)</li>
+<li>dashboard: attempt to throttle StatusBar, so it doesn’t re-render too often (@arturi)</li>
+<li>dashboard: refactor — only load one acquire panel at a time (activeAcquirer or empty), change focus behavior, utilize onload/onunload</li>
+<li>experimental: create a Dashboard UI for Redux refactor (@hedgerh)</li>
+<li>dashboard: make trigger optional — not needed when rendering inline (@arturi)</li>
+<li>fileinput: pretty input element #93 (@arturi)</li>
+<li>meta: document current Uppy architecture and question about the future (@arturi, @hedgerh)</li>
+<li>test: see about adding tests for autoProceed: true (@arturi)</li>
+<li>website: and ability to toggle options in Dashboard example: inline/modal, autoProceed, which plugins are enabled #89 (@arturi)</li>
+<li>website: finish https upgrade for uppy.io, uppy-server and tus, set up pingdom notifications (@arturi, @kvz, @hedgerh)</li>
+<li>website: update guide, API docs and main page example to match current actual API (@arturi)</li>
+<li>uppy-server: Make uppy server have dynamic controllers (@hedgerh)</li>
+</ul>
+<p>We hope you’ll enjoy this latest release. We have got a lot more in store for Uppy and we won’t wait too long with throwing you a bone again!</p>
+<p>The Uppy Team</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hey everyone! It has been a while since we last shared some news about our progress and we can’t wait to let you know what’s up(py)!&lt;/p&gt;
+&lt;p&gt;In October, we have been working hard to get Uppy 0.11 ready for release. This entailed, among other things, doing a write-up of our general architecture, bringing in a friend to look at what we’ve been up to, experimenting with Redux, and updating the Dashboard UI and website example.&lt;/p&gt;
+&lt;p&gt;Here’s what we have been up to, in some more detail.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Uppy 0.10: Getting together, the future, Google Drive UI, exposed events</title>
+    <link href="http://uppy.io/blog/2016/09/0.10/"/>
+    <id>http://uppy.io/blog/2016/09/0.10/</id>
+    <published>2016-09-28T00:00:00.000Z</published>
+    <updated>2017-03-07T15:46:52.643Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hi! Another month has passed and we have just released a new version of Uppy. Here’s what we’ve been up to.</p>
+<h2 id="Thinking-about-the-future-🔮"><a href="#Thinking-about-the-future-🔮" class="headerlink" title="Thinking about the future 🔮"></a>Thinking about the future 🔮</h2><p>We have been spending quite a lot of time thinking about Uppy’s future and the direction in which we would like to take this project.  Our primary concern is making Uppy as flexible as possible as well as compatible with popular libraries, such as React and React Native.  We also want to make it easy to port Uppy to any environments or ecosystems that are not officially supported.</p>
+<p>We have done a lot of research. We created <a href="https://github.com/hedgerh/uppy-react" target="_blank" rel="external">prototypes of Uppy React components</a> and  we also created a new module that we like to call “Uppy Base.” <a href="https://github.com/hedgerh/uppy-base" target="_blank" rel="external"><code>uppy-base</code></a> is a thin module containing reusable functionality from some of our plugins that can be used in any ecosystem or environment, without being opinionated about the UI.</p>
+<a id="more"></a>
+<p>Finally, we are also discussing using <a href="https://github.com/reactjs/redux" target="_blank" rel="external">Redux</a> as the internal state management store within Uppy.  You can see some drafts under the <a href="https://github.com/transloadit/uppy/tree/master/src/experimental" target="_blank" rel="external"><code>src/experimental</code> folder</a>.</p>
+<p>Have a look at the <a href="https://github.com/hedgerh/uppy-base" target="_blank" rel="external">Uppy Base repository here</a>.</p>
+<p>Check out <a href="https://github.com/hedgerh/uppy-react" target="_blank" rel="external">our Uppy React wrapper and components</a>, which are built on top of Uppy Base.</p>
+<p>Finally, we have played a bit with <a href="https://github.com/css-modules" target="_blank" rel="external">CSS Modules</a> and <a href="https://github.com/rtsao/csjs" target="_blank" rel="external">CSJS</a>.  We have also tried generating preview thumbnails in Web Workers, as well as with <a href="https://github.com/nodeca/pica" target="_blank" rel="external">Pica library</a>.</p>
+<p>We would love to hear feedback on all of this.  Please join our discussion at: <a href="https://github.com/transloadit/uppy/issues/116" target="_blank" rel="external">https://github.com/transloadit/uppy/issues/116</a></p>
+<p>You are, of course, more than welcome to chime in on other issues or to open new ones!</p>
+<h2 id="Dashboard-refreshed-look-and-new-features"><a href="#Dashboard-refreshed-look-and-new-features" class="headerlink" title="Dashboard: refreshed look and new features"></a>Dashboard: refreshed look and new features</h2><p>In an attempt to be brave and keep things simple, we have removed the dashed border from inside the Dashboard, rewritten its layout with flexbox, and tried out a new <a href="https://cloud.githubusercontent.com/assets/1199054/18763191/35d31ddc-80da-11e6-9a2c-c46388857135.png" target="_blank" rel="external">blend-in-with-the-background-and-blur</a> mode.</p>
+<p><img alt="Refreshed Dashboard UI" src="/images/blog/0.10/dashboard-sep-27-2016.jpg"></p>
+<p>Uppy now also has the option to render the Dashboard inline on the page, instead of the default full modal dialog. To try it out, set <code>inline: true</code> in options, like this: <code>uppy.use(Dashboard, {target: &#39;.myContainer&#39;, inline: true})</code>.</p>
+<p>We have also added a circular progress bar that shows total upload progress, combined with a pause all / resume all button, and an info panel that shows speed, ETA and status for all uploads currently in progress. So you’ll have something fun and useful to look at while you are waiting!</p>
+<p><img alt="Dashboard UI with global pause/resume buttons and a status bar — progress speed & ETA" src="/images/blog/0.10/dashboard-pause-resume-sep-27-2016.jpg"></p>
+<p>Be sure not to miss out on the new Copy Link button that appears after a successful upload, right where the edit button usually is. We know, that’s pretty exciting! And it gets even better: when you click on it, the link is copied to your clipboard. Or, in less capable browsers, a window pops up with a text link, so you can copy it yourself. Bananas!</p>
+<h2 id="Google-Drive-UI-improved"><a href="#Google-Drive-UI-improved" class="headerlink" title="Google Drive UI improved"></a>Google Drive UI improved</h2><p>The UI for Google Drive has received a fresh new redesign.  Check it out!</p>
+<p><img alt="The redesigned file browser UI for Google Drive" src="/images/blog/0.10/google-drive-ui-sep-27-2016.jpg"></p>
+<h2 id="Listen-to-events"><a href="#Listen-to-events" class="headerlink" title="Listen to events"></a>Listen to events</h2><p>We have finally begun to expose events on the <code>uppy</code> instance, so you can now subscribe to them and use them in your app. For example, in order to display an image in your UI after it has been successfully uploaded:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">uppy.on(<span class="string">'core:upload-success'</span>, (id, url) =&gt; &#123;</div><div class="line">  <span class="keyword">var</span> img = <span class="keyword">new</span> Image()</div><div class="line">  img.width = <span class="number">300</span></div><div class="line">  img.alt = id</div><div class="line">  img.src = url</div><div class="line">  <span class="built_in">document</span>.body.appendChild(img)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>There is also <code>core:upload-progress</code> to track progress and <code>core:success</code> for when all uploads are complete. The <a href="https://github.com/transloadit/uppy/#api" target="_blank" rel="external">event documentation</a> is quite small right now, we’ll be adding more once we sort out the API.</p>
+<h2 id="But-wait-there’s-more"><a href="#But-wait-there’s-more" class="headerlink" title="But wait, there’s more!"></a>But wait, there’s more!</h2><ul>
+<li>i18n strings now extend default en_US dictionary: if a certain string is not available in a language, the English string will be displayed.</li>
+<li>Updated readme: improved usage docs and CDN links. Check out <a href="https://github.com/transloadit/uppy/#usage" target="_blank" rel="external">the new usage section</a> for yourself. Import, require or script tag? In any case, we’ve got your back.</li>
+<li>Capabilities: we have added <code>capabilities</code> to the state.  For example, if ‘tus’ resumable uploader is used, <code>capabilities.resumable === true</code> is added to the state, so it is easy to check what upload capabilities are available. More to come.</li>
+</ul>
+<h2 id="Release-Notes"><a href="#Release-Notes" class="headerlink" title="Release Notes"></a>Release Notes</h2><p>Here is the full list of changes for version 0.10.0:</p>
+<ul>
+<li>core: expose some events/APIs/callbacks to the user: <code>onFileUploaded</code>, <code>onFileSelected</code>, <code>onAllUploaded</code>, <code>addFile</code> (or <code>parseFile</code>), open modal… (@arturi, @hedgerh)</li>
+<li>core: how would Uppy work without the UI, if one wants to Uppy to just add files and upload, while rendering preview and UI by themselves #116 — discussion Part 1 (@arturi, @hedgerh)</li>
+<li>core: refactor towards react compatibility as discussed in <a href="https://github.com/transloadit/uppy/issues/110" target="_blank" rel="external">https://github.com/transloadit/uppy/issues/110</a> (@hedgerh)</li>
+<li>core: CSS modules? allow bundling of CSS in JS for simple use in NPM? See #120#issuecomment-242455042, try <a href="https://github.com/rtsao/csjs" target="_blank" rel="external">https://github.com/rtsao/csjs</a> — verdict: not yet, try again later (@arturi, @hedgerh)</li>
+<li>core: try Web Workers and FileReaderSync for image resizing again — still slow, probably message payload between webworker and regular thread is huge (@arturi)</li>
+<li>core: i18n strings should extend default en_US dictionary — if a certain string in not available in German, English should be displayed (@arturi)</li>
+<li>dashboard: refactor to smaller components, pass props down (@arturi)</li>
+<li>dashboard: option to render Dashboard inline instead of a modal dialog (@arturi)</li>
+<li>dashboard: global circular progress bar, try out different designs for total upload speed and ETA (@arturi)</li>
+<li>dashboard: show total upload speed and ETA, for all files (@arturi)</li>
+<li>dashboard: copy link to uploaded file button, cross-browser (@arturi) (<a href="http://i.imgur.com/b1Io34n.png" target="_blank" rel="external">http://i.imgur.com/b1Io34n.png</a>) (@arturi)</li>
+<li>dashobard: refreshed design and grand refactor (@arturi)</li>
+<li>dashboard: improve file paste the best we can <a href="http://stackoverflow.com/a/22940020" target="_blank" rel="external">http://stackoverflow.com/a/22940020</a> (@arturi)</li>
+<li>provider: abstract google drive into provider plugin for reuse (@hedgerh)</li>
+<li>google drive: improve UI (@hedgerh)</li>
+<li>tus: add <code>resumable</code> capability flag (@arturi)</li>
+<li>tus: start fixing pause/resume issues and race conditions (@arturi)</li>
+<li>test: working Uppy example on Require Bin — latest version straight from NPM <a href="http://requirebin.com/?gist=54e076cccc929cc567cb0aba38815105" target="_blank" rel="external">http://requirebin.com/?gist=54e076cccc929cc567cb0aba38815105</a> (@arturi @account)</li>
+<li>meta: update readme docs, add unpkg CDN links (<a href="https://unpkg.com/uppy/dist/uppy.min.css" target="_blank" rel="external">https://unpkg.com/uppy/dist/uppy.min.css</a>) (@arturi)</li>
+<li>meta: write 0.10 release blog post (@arturi)</li>
+</ul>
+<p>We’ll see you in about a month!</p>
+<p>The Uppy Team</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hi! Another month has passed and we have just released a new version of Uppy. Here’s what we’ve been up to.&lt;/p&gt;
+&lt;h2 id=&quot;Thinking-about-the-future-🔮&quot;&gt;&lt;a href=&quot;#Thinking-about-the-future-🔮&quot; class=&quot;headerlink&quot; title=&quot;Thinking about the future 🔮&quot;&gt;&lt;/a&gt;Thinking about the future 🔮&lt;/h2&gt;&lt;p&gt;We have been spending quite a lot of time thinking about Uppy’s future and the direction in which we would like to take this project.  Our primary concern is making Uppy as flexible as possible as well as compatible with popular libraries, such as React and React Native.  We also want to make it easy to port Uppy to any environments or ecosystems that are not officially supported.&lt;/p&gt;
+&lt;p&gt;We have done a lot of research. We created &lt;a href=&quot;https://github.com/hedgerh/uppy-react&quot;&gt;prototypes of Uppy React components&lt;/a&gt; and  we also created a new module that we like to call “Uppy Base.” &lt;a href=&quot;https://github.com/hedgerh/uppy-base&quot;&gt;&lt;code&gt;uppy-base&lt;/code&gt;&lt;/a&gt; is a thin module containing reusable functionality from some of our plugins that can be used in any ecosystem or environment, without being opinionated about the UI.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Uppy 0.9: Making Progress, then pause &amp; resume. Remote file uploads, Informer.</title>
+    <link href="http://uppy.io/blog/2016/08/0.9.0/"/>
+    <id>http://uppy.io/blog/2016/08/0.9.0/</id>
+    <published>2016-08-26T00:00:00.000Z</published>
+    <updated>2017-03-07T15:46:52.643Z</updated>
+    
+    <content type="html"><![CDATA[<p>We have just released Uppy 0.9.0. This release features some changes that we think you will be very excited about.  Let’s see what’s new!</p>
+<a id="more"></a>
+<h2 id="Ability-to-pause-uploads-progress-indicators-amp-ETA"><a href="#Ability-to-pause-uploads-progress-indicators-amp-ETA" class="headerlink" title="Ability to pause uploads, progress indicators &amp; ETA"></a>Ability to pause uploads, progress indicators &amp; ETA</h2><p>The most visible feature that has been added is the ability to pause and resume file uploads.</p>
+<p><img alt="dashboard UI with paused uploads" src="/images/blog/0.9/upload-pause.jpg" class="border"></p>
+<p><img alt="dashboard UI with files uploading and a pause all button" src="/images/blog/0.9/upload-resume.jpg" class="border"></p>
+<p>The upload dashboard now contains more information about uploads, such as the time remaining until an upload is finished. We have also added circular progress indicators to give better visual feedback on an upload’s progress.</p>
+<h2 id="Remote-file-uploads"><a href="#Remote-file-uploads" class="headerlink" title="Remote file uploads"></a>Remote file uploads</h2><p>Remote file uploading is now working again.</p>
+<h2 id="Informer-interface"><a href="#Informer-interface" class="headerlink" title="Informer interface"></a>Informer interface</h2><p>We have added a new <code>Informer</code> plugin (tested with <code>Dashboard</code>, should also work anywhere else) that listens to <code>informer</code> events, like so:<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">bus.emit(<span class="string">'informer'</span>, message, type, duration)</div></pre></td></tr></table></figure></p>
+<p> and displays a message bubble for a certain amount of time. It will be useful to notify you when the internet connection is (a licky boom-boom) down (or back up):</p>
+<p><img alt="info: no connection" src="/images/blog/0.9/info-no-connection.jpg" class="border"></p>
+<p>Or when Uppy has successfully uploaded your files:</p>
+<p><img alt="info: upload successful" src="/images/blog/0.9/info-upload-success.jpg" class="border"></p>
+<h2 id="Webcam-Say-Cheese"><a href="#Webcam-Say-Cheese" class="headerlink" title="Webcam: Say Cheese!"></a>Webcam: Say Cheese!</h2><p>The Webcam plugin can now take snapshots and add them to the file dashboard in Uppy’s modal.  We have also added Flash support for Safari/IE users.  The UI has also been cleaned up in the dashboard.  We have temporarily disabled video recording in order to focus on rolling out the snapshot feature.</p>
+<h2 id="Under-the-hood-UI-refactors"><a href="#Under-the-hood-UI-refactors" class="headerlink" title="Under the hood: UI refactors"></a>Under the hood: UI refactors</h2><p>Under the hood, we have made some changes to how the UI is structured.  We are taking a more componentized approach.  For example, the rendering of Google Drive’s UI has been separated into multiple smaller components that can be found in the <a href="https://github.com/transloadit/uppy/tree/master/src/plugins/GoogleDrive" target="_blank" rel="external"><code>plugins/GoogleDrive</code> folder</a>.</p>
+<h2 id="Release-Notes"><a href="#Release-Notes" class="headerlink" title="Release Notes"></a>Release Notes</h2><p>Here is the full list of changes for version 0.9.0.:</p>
+<ul>
+<li>dashboard: informer interface: message when all uploads are “done” (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>dashboard: improve file paste — not really possible — no file names, weird API, Chrome-only <a href="http://stackoverflow.com/a/22940020" target="_blank" rel="external">http://stackoverflow.com/a/22940020</a> (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>meta: add google demo account <a href="https://github.com/kvz" target="_blank" rel="external">@kvz</a>)</li>
+<li>meta: Set up a Google testing account that people can use to try the demo (<a href="https://github.com/hedgerh" target="_blank" rel="external">@hedgerh</a>)</li>
+<li>meta: write 0.9 release blog post (<a href="https://github.com/hedgerh" target="_blank" rel="external">@hedgerh</a>)</li>
+<li>webcam: a barely working webcam snapshot &amp; upload (<a href="https://github.com/hedgerh" target="_blank" rel="external">@hedgerh</a>)</li>
+<li>metadata: Uppy + tus empty metadata value issue in Safari <a href="https://github.com/tus/tus-js-client/issues/41" target="_blank" rel="external">https://github.com/tus/tus-js-client/issues/41</a> –&gt; tus issue — nailed down, passed to @account (@arturi, @account)</li>
+<li>core: experiment with switching to <code>virtual-dom</code> in a separate branch; experiment with rollup again (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>core: figure out race conditions (animations not completing because file div gets re-added to the dom each time) with <code>yo-yo</code>/<code>morphdom</code> <a href="https://github.com/shama/bel/issues/26#issuecomment-238004130" target="_blank" rel="external">https://github.com/shama/bel/issues/26#issuecomment-238004130</a> (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>core: switch to <a href="https://github.com/sethvincent/namespace-emitter" target="_blank" rel="external">https://github.com/sethvincent/namespace-emitter</a> — smaller, allows for <code>on(&#39;*&#39;)</code> (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>dashboard: add aria-labels and titles everywhere to improve accessibility #114 (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>dashboard: file name + extension should fit on two lines, truncate in the middle (maybe <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/measureText" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/measureText</a>) (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>dashboard: implement a circular progress indicator on top of the fileItem with play/pause (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>dashboard: refactor to smaller components, as discussed in #110 (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>google drive: refactor to smaller components, as discussed in #110 (<a href="https://github.com/hedgerh" target="_blank" rel="external">@hedgerh</a>)</li>
+<li>google drive: add demo account (<a href="https://github.com/hedgerh" target="_blank" rel="external">@hedgerh</a>)</li>
+<li>metadata: add labels to fields in fileCard (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>metadata: the aftermath — better UI (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>test: Get IE6 on Win XP to run Uppy and see it fall back to regular form upload #108 (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>test: refactor tests, add DragDrop back (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>tus: update uppy to tus-js-client@1.2.1, test on requirebin (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>tus: add ability to pause/resume all uploads at once (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>tus: add ability to pause/resume upload (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+</ul>
+<p>We hope you will enjoy this latest release. Uppy is still improving every day and we hope to bring you more news about our progress soon!</p>
+<p>The Uppy Team</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;We have just released Uppy 0.9.0. This release features some changes that we think you will be very excited about.  Let’s see what’s new!&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Uppy version 0.8 released: The Webcam Edition and Meta Data</title>
+    <link href="http://uppy.io/blog/2016/08/0.8.0/"/>
+    <id>http://uppy.io/blog/2016/08/0.8.0/</id>
+    <published>2016-08-17T00:00:00.000Z</published>
+    <updated>2017-03-07T15:46:52.643Z</updated>
+    
+    <content type="html"><![CDATA[<p>We have just released Uppy 0.8.0 and we can’t wait to tell you more about it. Along with various under-the-hood improvements, this release also contains some very visible upgrades. You can read below for further details.</p>
+<h2 id="Including-Meta-Data"><a href="#Including-Meta-Data" class="headerlink" title="Including Meta Data"></a>Including Meta Data</h2><p>While fetching your files, Uppy is now also able to supply some custom metadata to go along with them. So far, there are three components in place for that: Core API (<code>core:update-meta</code> event), <code>MetaData</code> plugin, and a new panel in Dashboard UI called File Card, which looks like this:</p>
+<p><img alt="metadata dashboard UI, editing file name, future size and adding description" src="/images/blog/0.8/metadata-dashboard.jpg" class="border"></p>
+<a id="more"></a>
+<p>To summon this panel, all you have to do is click the edit button on the Dashboard:</p>
+<p><img alt="metadata dashboard UI, editing file name, future size and adding description" src="/images/blog/0.8/uppy-dashboard-ui.jpg" class="border"></p>
+<p>By default, the only active metadata field is <code>Name</code>. However, if you want to add other fields you can utilize our new and easy to use <code>MetaData</code> plugin:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> uppy = <span class="keyword">new</span> Uppy()</div><div class="line">  .use(Dashboard)</div><div class="line">  .use(MetaData, &#123;</div><div class="line">    <span class="attr">fields</span>: [</div><div class="line">      &#123; <span class="attr">id</span>: <span class="string">'resizeTo'</span>, <span class="attr">name</span>: <span class="string">'Resize to'</span>, <span class="attr">value</span>: <span class="number">1200</span>, <span class="attr">placeholder</span>: <span class="string">'specify future image size'</span> &#125;,</div><div class="line">      &#123; <span class="attr">id</span>: <span class="string">'description'</span>, <span class="attr">name</span>: <span class="string">'Description'</span>, <span class="attr">value</span>: <span class="string">''</span>, <span class="attr">placeholder</span>: <span class="string">'describe what the file is for'</span> &#125;</div><div class="line">    ]</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
+<p>And just like that, we have added two fields: <code>Resize</code> and <code>Description</code>. All metadata is sent along with both <a href="http://tus.io" target="_blank" rel="external">tus</a> and multipart uploads.</p>
+<h2 id="Webcam-Support"><a href="#Webcam-Support" class="headerlink" title="Webcam Support"></a>Webcam Support</h2><p>We have also added a basic <code>Webcam</code> plugin, which allows you to acquire images directly from your own webcam. This is still a work in progress and we will be improving it in the next release.</p>
+<h2 id="Mime-Types-and-File-Icons"><a href="#Mime-Types-and-File-Icons" class="headerlink" title="Mime Types and File Icons"></a>Mime Types and File Icons</h2><p>Uppy now includes a <a href="https://www.npmjs.com/package/mime-types" target="_blank" rel="external">mime-type</a> library that helps us figure out file types by extension.</p>
+<p>Having proper file types also means that we need the right corresponding file icons for the Dashboard UI. We have already added a few and we will soon supply more icons for audio, video, text, PDF and other common file types.</p>
+<h2 id="Previously-on-Uppy-File-Previews-Remote-File-Handling-Accessibility-and-Acceptance-Tests-Stats"><a href="#Previously-on-Uppy-File-Previews-Remote-File-Handling-Accessibility-and-Acceptance-Tests-Stats" class="headerlink" title="Previously on Uppy: File Previews, Remote File Handling, Accessibility and Acceptance Tests Stats"></a>Previously on Uppy: File Previews, Remote File Handling, Accessibility and Acceptance Tests Stats</h2><p>We thought it might be worth taking a moment to list a few highlights from the previous versions as well:</p>
+<ul>
+<li>If a file you selected is an image, its preview thumbnail data URL will be generated and added to <code>file.preview</code> in Uppy’s state. This URL can be used later to render a preview with any plugin. Currently, this is done by the mighty Dashboard.</li>
+<li>It is now also possible to select remote files in Uppy. Simply double-click a file from, for instance, Google Drive, and Uppy will then show it in a preview area.</li>
+<li>We have been doing some more work on accessibility: from now on, when you switch tabs in Modal, it will focus on the first input in that tab. We have also added proper labels and titles, and are doing more research in this area.</li>
+<li>Everybody likes to see stats. That is why, on our website, you can now <a href="http://uppy.io/stats">view stats</a> that show how acceptance tests are performing in various browsers. If a test is successful, that means Uppy will likely be able to load and upload files in that particular browser.</li>
+<li>The Dashboard UI is now way better looking and easier to work with. It replaced the old <code>Modal</code> plugin and it can accept files via drag &amp; drop, local disk and paste (experimental, WIP). It has become our main source of truth and the basic acquire plugin for local files. The DragDrop plugin is still available as a lighter alternative.</li>
+</ul>
+<h2 id="Release-Notes"><a href="#Release-Notes" class="headerlink" title="Release Notes"></a>Release Notes</h2><p>Here is the full list of changes for version 0.8.0.</p>
+<ul>
+<li>core: fix bug: no meta information from uppy-server files (<a href="https://github.com/hedgerh" target="_blank" rel="external">@hedgerh</a>)</li>
+<li>core: fix bug: uppy-server file is treated as local and directly uploaded (<a href="https://github.com/hedgerh" target="_blank" rel="external">@hedgerh</a>)</li>
+<li>uppy-server: hammering out websockets/oauth (<a href="https://github.com/hedgerh" target="_blank" rel="external">@hedgerh</a>, <a href="https://github.com/acconut" target="_blank" rel="external">@acconut</a>)</li>
+<li>debugger: introduce MagicLog as a way to debug state changes in Uppy (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>modifier: A MetaData plugin to supply meta data (like width, tag, filename, user_id) (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>modifier: pass custom metadata with non-tus-upload. Maybe mimic meta behavior of tus here, too (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>modifier: pass custom metadata with tus-upload with tus-js-client (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>webcam: initial version: webcam light goes on (<a href="https://github.com/hedgerh" target="_blank" rel="external">@hedgerh</a>)</li>
+<li>progress: better icons, styles (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>core: better mime/type detection (via mime + extension) (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>core: add deep-freeze to getState so that we are sure we are not mutating state accidentally (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>meta: release “Uppy Begins” post (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a> <a href="https://github.com/kvz" target="_blank" rel="external">@kvz</a>)</li>
+<li>meta: better readme on GitHub and NPM (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>test: add pre-commit &amp; lint-staged (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>test: add next-update <a href="https://www.npmjs.com/package/next-update" target="_blank" rel="external">https://www.npmjs.com/package/next-update</a> to check if packages we use can be safely updated (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>website: blog polish — add post authors and their gravatars (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>dashboard: UI revamp, more prototypes, background image, make dashboard nicer (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>dashboard: try a workflow where import from external service slides over and takes up the whole dashboard screen (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+<li>modal: merge modal and dashboard (<a href="https://github.com/arturi" target="_blank" rel="external">@arturi</a>)</li>
+</ul>
+<p>We hope you will enjoy this latest release. Uppy is still improving every day and we hope to bring you more news about our progress soon!</p>
+<p>The Uppy Team</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;We have just released Uppy 0.8.0 and we can’t wait to tell you more about it. Along with various under-the-hood improvements, this release also contains some very visible upgrades. You can read below for further details.&lt;/p&gt;
+&lt;h2 id=&quot;Including-Meta-Data&quot;&gt;&lt;a href=&quot;#Including-Meta-Data&quot; class=&quot;headerlink&quot; title=&quot;Including Meta Data&quot;&gt;&lt;/a&gt;Including Meta Data&lt;/h2&gt;&lt;p&gt;While fetching your files, Uppy is now also able to supply some custom metadata to go along with them. So far, there are three components in place for that: Core API (&lt;code&gt;core:update-meta&lt;/code&gt; event), &lt;code&gt;MetaData&lt;/code&gt; plugin, and a new panel in Dashboard UI called File Card, which looks like this:&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&quot;metadata dashboard UI, editing file name, future size and adding description&quot; src=&quot;/images/blog/0.8/metadata-dashboard.jpg&quot; class=&quot;border&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Uppy: let’s teach an old dog some new tricks</title>
+    <link href="http://uppy.io/blog/2016/07/uppy-begins/"/>
+    <id>http://uppy.io/blog/2016/07/uppy-begins/</id>
+    <published>2016-07-15T00:00:00.000Z</published>
+    <updated>2017-03-07T15:46:52.643Z</updated>
+    
+    <content type="html"><![CDATA[<p>For the past six months, we have been working hard on uppy.io. We feel that it is high time we gave you a look behind the scenes: what are we working on, and why.</p>
+<p><img src="/images/blog/uppy-begins/uppy-dashboard.jpg"></p>
+<p>The way uploading works has not changed in a meaningful way since the days of our trusty old 56 kbit/s modems. Of course, files have gotten bigger and speeds have increased, but that is more or less all there is to say. If it were up to us – and we hope it is – that is all about to change.</p>
+<p>We at <a href="https://transloadit.com/" target="_blank" rel="external">Transloadit</a> are on a mission to change the way the world does uploading. To accomplish this, our first step has been to develop an open protocol for resumable file uploads, called <a href="http://tus.io/" target="_blank" rel="external">‘tus’</a>. Finally, that 2GB video upload from your smartphone doesn’t have to start over when your train passes through a tunnel! The protocol got <a href="https://news.ycombinator.com/item?id=10591348" target="_blank" rel="external">Hacker News excited</a> on several occasions and is being deployed by, among others, our friends at Vimeo. Now that a stable version 1.0 of ‘tus’ has been released, it is time to put it to the test. A protocol without real-world applications is nothing more than a meaningless document, after all.</p>
+<p>We are therefore excited to tell you about Uppy: the file uploader that will certainly fetch more than just your newspaper.</p>
+<a id="more"></a>
+<h2 id="Why-the-need-for-another-file-uploader"><a href="#Why-the-need-for-another-file-uploader" class="headerlink" title="Why the need for another file uploader?"></a>Why the need for another file uploader?</h2><p>It is true, there are indeed already a good few file uploading solutions out there (<a href="http://www.dropzonejs.com/" target="_blank" rel="external">Dropzone</a>, for instance, is quite good). And – for the most part – they do their job. Nevertheless, they are quite limited in their functionality:</p>
+<ul>
+<li><p>You can drag and drop files from local disk, but uploaders that supports Instagram, Dropbox or Google Drive are scarce. The ones out there lock you in with vendors and are hard to customize for own use.</p>
+</li>
+<li><p>File uploaders are seldom mindful of the existence of encoding and processing backends, while the reality is that files often require some form of processing and that the end user would like to receive progress updates with regard to that.</p>
+</li>
+<li><p>None of the currently available file uploaders make use of the standardized resumability that ‘tus’ provides, which makes them less than ideal for handling larger files.</p>
+</li>
+<li><p>Lastly, we feel that the current solutions are sometimes dropping the ball when it comes to a polished user experience. We aim to fix that.</p>
+</li>
+</ul>
+<p>All in all, we think there is definitely some ‘trouble at the old mill’ here and it’s time to let Uppy take care of that!</p>
+<h2 id="Our-plans-for-Uppy"><a href="#Our-plans-for-Uppy" class="headerlink" title="Our plans for Uppy"></a>Our plans for Uppy</h2><p>Uppy will be a JavaScript file uploader that allows you to fetch files, not only from your local disk, but also from places like Dropbox, Instagram, Google Drive, webcams and remote URLs. It will have a modular, plugin-based design, making it lightweight and customizable.</p>
+<p>Cute on the outside, the core of Uppy is very robust – thanks to resumability through ‘tus’. We are confident that Uppy will be able to send even the biggest of files over the smallest of tubes.</p>
+<p>Uppy will also offer first class support for accessing Transloadit’s uploading and encoding backend, making it incredibly versatile. Of course, these are all ultimately just plugins, and Uppy can just as easily be used with your own backend – meaning no need to pay any subscription fees.</p>
+<p>We are intent on making the user experience as smooth and satisfying as possible, in terms of both functionality and visual design. Uppy will have a beautiful, themeable UI and it will look – and work – great on mobile platforms as well. While we hope that advanced users will love the customizable nature of Uppy, an ample selection of presets will also be there to make sure that novice users are not going to be lost in the woods.</p>
+<p>Lastly, and this is a point of special significance to us, Uppy will be completely open source. When Uppy is finished, you will be free to use it for whatever you like. Until that time, we very much welcome your ideas and contributions. There are still a lot of decisions to be made and this is the perfect time to come and influence the end product.</p>
+<p>We are going to work hard on bringing you the best file uploader possible and we’ll keep you informed about the development process on <a href="http://uppy.io/">uppy.io</a>. We can’t wait for you to meet Uppy!</p>
+<blockquote>
+<p>We were on the <a href="https://news.ycombinator.com/item?id=12109410" target="_blank" rel="external">Hacker News</a> and <a href="https://www.producthunt.com/posts/uppy" target="_blank" rel="external">Product Hunt</a> frontpages. Comments welcome there.</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;For the past six months, we have been working hard on uppy.io. We feel that it is high time we gave you a look behind the scenes: what are we working on, and why.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/blog/uppy-begins/uppy-dashboard.jpg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;The way uploading works has not changed in a meaningful way since the days of our trusty old 56 kbit/s modems. Of course, files have gotten bigger and speeds have increased, but that is more or less all there is to say. If it were up to us – and we hope it is – that is all about to change.&lt;/p&gt;
+&lt;p&gt;We at &lt;a href=&quot;https://transloadit.com/&quot;&gt;Transloadit&lt;/a&gt; are on a mission to change the way the world does uploading. To accomplish this, our first step has been to develop an open protocol for resumable file uploads, called &lt;a href=&quot;http://tus.io/&quot;&gt;‘tus’&lt;/a&gt;. Finally, that 2GB video upload from your smartphone doesn’t have to start over when your train passes through a tunnel! The protocol got &lt;a href=&quot;https://news.ycombinator.com/item?id=10591348&quot;&gt;Hacker News excited&lt;/a&gt; on several occasions and is being deployed by, among others, our friends at Vimeo. Now that a stable version 1.0 of ‘tus’ has been released, it is time to put it to the test. A protocol without real-world applications is nothing more than a meaningless document, after all.&lt;/p&gt;
+&lt;p&gt;We are therefore excited to tell you about Uppy: the file uploader that will certainly fetch more than just your newspaper.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

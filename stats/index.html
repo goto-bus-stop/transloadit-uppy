@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Stats - Uppy</title>
+    <meta charset="utf-8">
+    <meta name="title" content="Uppy">
+    <meta name="description" content="Almost as cute as a puppy">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@uppy_io">
+    <meta name="twitter:creator" content="@uppy_io">
+    <meta property="og:url" content="http://uppy.io/stats/index.html">
+    <meta property="og:title" content="Stats - Uppy">
+    <meta name="twitter:title" content="Stats - Uppy">
+    <meta name="description" content="Uppy is (going to be) a JavaScript file uploader that fetches files from Dropbox, Instagram, local disk, remote URLs, and other exciting locations. It has a plugin-based architecture, first-class support for resumable uploads according to the open standard: &lt;a href=&quot;http://tus.io&quot;&gt;tus&lt;/a&gt;, and custom encoding backends, making it extensible and robust. Uppy is in the early stages of development and should not be used for anything serious yet.
+">
+    <meta name="twitter:description" content="Uppy is (going to be) a JavaScript file uploader that fetches files from Dropbox, Instagram, local disk, remote URLs, and other exciting locations. It has a plugin-based architecture, first-class support for resumable uploads according to the open standard: &lt;a href=&quot;http://tus.io&quot;&gt;tus&lt;/a&gt;, and custom encoding backends, making it extensible and robust. Uppy is in the early stages of development and should not be used for anything serious yet.
+">
+    <meta property="og:image" content="/images/uppy-social.jpg">
+    <meta name="twitter:image" content="/images/uppy-social.jpg">
+
+    <link rel="icon" href="/images/logos/uppy-dog-head-arrow.png" type="image/x-icon">
+    <link rel="alternate" type="application/rss+xml" title="Uppy" href="/atom.xml">
+
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto+Mono" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Poiret+One:400" rel="stylesheet">
+    <script>
+      window.PAGE_TYPE = "guide"
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-63083-12', 'uppy.io');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body class="page-inner">
+    <div class="page">
+      <header id="header" class="MainHeader js-MainHeader">
+        <button class="MainHeader-menuBtn js-MenuBtn"></button>
+
+        <a id="logo" class="MainLogo" href="/">
+          <img class="MainLogo-img" src="/images/logos/uppy-dog-head-arrow.svg">
+          <span class="MainLogo-text">Uppy</span>
+        </a>
+
+        <nav>
+          <ul id="nav" class="MainMenu">
+            <!-- @todo uncomment search input when we get our own swifttype -->
+<!-- <li>
+  <form id="search-form" class="MainMenu-search">
+    <input type="text" id="search-query" class="MainMenu-searchQuery st-default-search-input">
+  </form>
+</li> -->
+<li><a href="/guide/" class="nav-link">Guide</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/dashboard/" class="nav-link">Examples</a></li>
+<li><a href="/stats/" class="nav-link current">Stats</a></li>
+<li><a href="/blog/" class="nav-link">Blog</a></li>
+<li><a href="https://github.com/transloadit/uppy" class="nav-link">Github</a></li>
+
+          </ul>
+        </nav>
+      </header>
+
+      <main class="MainContent js-MainContent" id="main">
+        
+          <div class="Sidebar js-Sidebar">
+  <ul class="main-menu">
+    <!-- @todo uncomment search input when we get our own swifttype -->
+<!-- <li>
+  <form id="search-form" class="MainMenu-search">
+    <input type="text" id="search-query" class="MainMenu-searchQuery st-default-search-input">
+  </form>
+</li> -->
+<li><a href="/guide/" class="nav-link">Guide</a></li>
+<li><a href="/api/" class="nav-link">API</a></li>
+<li><a href="/examples/dashboard/" class="nav-link">Examples</a></li>
+<li><a href="/stats/" class="nav-link current">Stats</a></li>
+<li><a href="/blog/" class="nav-link">Blog</a></li>
+<li><a href="https://github.com/transloadit/uppy" class="nav-link">Github</a></li>
+
+  </ul>
+  <div class="list">
+    <h2>
+      Guide
+    </h2>
+    <ul class="menu-root">
+      
+        <li>
+          <a href="/stats/index.html" class="sidebar-link current">Stats</a>
+        </li>
+      
+        <li>
+          <a href="/guide/index.html" class="sidebar-link">Getting Started</a>
+        </li>
+      
+        <li>
+          <a href="/guide/faq.html" class="sidebar-link">FAQ</a>
+        </li>
+      
+        <li>
+          <a href="/guide/contributing.html" class="sidebar-link">Contributing Guidelines</a>
+        </li>
+      
+    </ul>
+    <ul class="Social">
+  <li><a href="https://twitter.com/uppy_io" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @uppy_io</a></li>
+  <li><iframe src="https://ghbtns.com/github-btn.html?user=transloadit&repo=uppy&type=watch&count=true"
+allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe></li>
+  <li class="BuildBadge">
+   <span class="wrapper">
+     <a href="https://travis-ci.org/transloadit/uppy"><img src="https://travis-ci.org/transloadit/uppy.svg" alt="Build Status"></a>
+   </span>
+  </li>
+  <li class="SauceBadge">
+   <span class="wrapper">
+     <a href="https://saucelabs.com/u/transloadit-uppy">
+       <img src="https://saucelabs.com/buildstatus/transloadit-uppy" alt="Sauce Test Status"/>
+     </a>
+   </span>
+  </li>
+</ul>
+
+  </div>
+</div>
+
+
+<div class="Content js-Content guide with-sidebar">
+  <h1>Stats</h1>
+  <div class="Stats-bundleSizes">
+    <strong class="underline">Bundle Sizes</strong>
+    <dl>
+      
+        
+        <dt>
+          
+            <a href="/uppy/uppy.js">uppy.js</a>
+          
+        </dt>
+        <dd class="
+          
+            red
+          
+          
+        ">
+
+          
+            388.11 Kb
+          
+        </dd>
+      
+        
+        <dt>
+          
+            <a href="/uppy/uppy.js.gz">uppy.js.gz</a>
+          
+        </dt>
+        <dd class="
+          
+          
+        ">
+
+          
+            88.18 Kb
+          
+        </dd>
+      
+        
+        <dt>
+          
+            <a href="/uppy/uppy.min.js">uppy.min.js</a>
+          
+        </dt>
+        <dd class="
+          
+            red
+          
+          
+        ">
+
+          
+            197.30 Kb
+          
+        </dd>
+      
+        
+        <dt>
+          
+            <a href="/uppy/uppy.min.js.gz">uppy.min.js.gz</a>
+          
+        </dt>
+        <dd class="
+          
+          
+        ">
+
+          
+            52.00 Kb
+          
+        </dd>
+      
+        
+        <dt>
+          
+            <a href="/uppy/uppy.css">uppy.css</a>
+          
+        </dt>
+        <dd class="
+          
+          
+        ">
+
+          
+            62.75 Kb
+          
+        </dd>
+      
+        
+        <dt>
+          
+            <a href="/uppy/uppy.css.gz">uppy.css.gz</a>
+          
+        </dt>
+        <dd class="
+          
+          
+            green
+          
+        ">
+
+          
+            7.83 Kb
+          
+        </dd>
+      
+        
+        <dt>
+          
+            <a href="/uppy/uppy.min.css">uppy.min.css</a>
+          
+        </dt>
+        <dd class="
+          
+          
+            green
+          
+        ">
+
+          
+            37.76 Kb
+          
+        </dd>
+      
+        
+        <dt>
+          
+            <a href="/uppy/uppy.min.css.gz">uppy.min.css.gz</a>
+          
+        </dt>
+        <dd class="
+          
+          
+            green
+          
+        ">
+
+          
+            6.71 Kb
+          
+        </dd>
+      
+    </dl>
+  </div>
+
+  <p class="Stats-infoText">
+    At this (early) stage, we’re allowing ourselves speed of development over
+    lean packaging, but as Uppy matures, we’ll be using be using
+    <a href="http://rollupjs.org/">rollup.js</a> for tree-shaking, and in addition
+    we’ll be trimming away fat ourselves where we can.
+    The graph below will help us discover low hanging fruit:
+  </p>
+
+  <iframe scrolling="no" seamless="seamless" class="Disc" src="/disc.html"></iframe>
+  This graph is built with
+  <a href="https://twitter.com/hughskennedy">Hugh Kennedy</a>’s excellent
+  <a href="http://hughsk.io/disc/">disc</a>.
+  <hr />
+
+  <h2>Browser support</h2>
+
+  <p>This reflects the current state of Uppy and is updated with every change.</p>
+
+  <a href="https://saucelabs.com/u/transloadit-uppy">
+    <img src="https://saucelabs.com/browser-matrix/transloadit-uppy.svg" alt="Sauce Test Status" width="100%">
+  </a>
+
+  <div class="footer">Caught a mistake or want to contribute to the documentation?
+    <a href="https://github.com/transloadit/uppy/blob/master/website/src/stats.ejs" target="_blank">
+      Edit/fork this page directly on Github
+    </a>!
+  </div>
+</div>
+
+        
+      </main>
+
+      
+        <script src="/js/smooth-scroll.min.js"></script>
+      
+      <script src="/js/common.js"></script>
+
+
+      <!-- Twitter follow button script -->
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+      <!--script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+      <script>
+        WebFont.load({
+          google: {
+            families: ['Source Sans Pro:400,600', 'Roboto Mono', 'Poiret One:400']
+          }
+        });
+      </script-->
+    </div>
+  </body>
+</html>
