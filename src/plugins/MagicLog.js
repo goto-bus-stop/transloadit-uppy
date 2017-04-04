@@ -23,7 +23,7 @@ module.exports = class MagicLog extends Plugin {
 
   install () {
     const uppy = this.core.emitter
-    uppy.on('state-update', (prev, state, patch) => {
+    uppy.on('core:state-update', (prev, state, patch) => {
       console.group('State')
       console.log('Prev', prev)
       console.log('Next', state)
