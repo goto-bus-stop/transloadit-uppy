@@ -17,6 +17,7 @@ module.exports = function fileItem (props) {
   const uploadInProgressOrComplete = file.progress.uploadStarted
   const uploadInProgress = file.progress.uploadStarted && !file.progress.uploadComplete
   const isPaused = file.isPaused || false
+  const hasError = !!file.uploadError
 
   const fileName = getFileNameAndExtension(file.meta.name)[0]
   const truncatedFileName = props.isWide ? truncateString(fileName, 15) : fileName
@@ -25,7 +26,8 @@ module.exports = function fileItem (props) {
                         ${uploadInProgress ? 'is-inprogress' : ''}
                         ${isUploaded ? 'is-complete' : ''}
                         ${isPaused ? 'is-paused' : ''}
-                        ${props.resumableUploads ? 'is-resumable' : ''}"
+                        ${props.resumableUploads ? 'is-resumable' : ''}
+                        ${hasError ? 'is-errored' : ''}"
                   id="uppy_${file.id}"
                   title="${file.meta.name}">
       <div class="UppyDashboardItem-preview">
@@ -103,6 +105,16 @@ module.exports = function fileItem (props) {
                           })
                           .catch(props.log)
                        }}>${iconCopy()}</button>`
+        : null
+      }
+      ${hasError
+        // TODO locale string for "Failed to upload"
+        ? html`
+            <p class="UppyDashboardItem-hasError"
+               title="${file.uploadError.message}">
+              ⚠ Failed to upload
+            </p>
+          `
         : null
       }
     </div>

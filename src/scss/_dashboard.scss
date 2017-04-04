@@ -569,6 +569,15 @@
   }
 }
 
+.UppyDashboardItem.is-errored {
+  border-color: $color-red;
+}
+
+.UppyDashboardItem-hasError {
+  font-size: 11px;
+  color: $color-red;
+}
+
 .UppyDashboardItem-action {
   position: absolute;
   top: 8px;
