@@ -77,7 +77,15 @@ module.exports = class Multipart extends Plugin {
         // }
       })
 
-      xhr.addEventListener('error', (ev) => {
+      xhr.addEventListener('error', (error) => {
+        this.core.setState({
+          files: Object.assign({}, this.core.state.files, {
+            [file.id]: Object.assign({}, file, {
+              uploadError: error
+            })
+          })
+        })
+
         this.core.emitter.emit('core:upload-error', file.id)
         return reject('Upload error')
       })

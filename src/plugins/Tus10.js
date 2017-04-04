@@ -95,6 +95,15 @@ module.exports = class Tus10 extends Plugin {
         onError: (err) => {
           this.core.log(err)
           this.core.emitter.emit('core:upload-error', file.id, err)
+
+          this.core.setState({
+            files: Object.assign({}, this.core.state.files, {
+              [file.id]: Object.assign({}, file, {
+                uploadError: err
+              })
+            })
+          })
+
           reject('Failed because: ' + err)
         },
         onProgress: (bytesUploaded, bytesTotal) => {
