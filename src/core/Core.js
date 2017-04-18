@@ -353,13 +353,13 @@ class Uppy {
     }
   }
 
-/**
- * Registers a plugin with Core
- *
- * @param {Class} Plugin object
- * @param {Object} options object that will be passed to Plugin later
- * @return {Object} self for chaining
- */
+  /**
+   * Registers a plugin with Core
+   *
+   * @param {Class} Plugin object
+   * @param {Object} options object that will be passed to Plugin later
+   * @return {Object} self for chaining
+   */
   use (Plugin, opts) {
     // Instantiate
     const plugin = new Plugin(this, opts)
@@ -391,11 +391,11 @@ class Uppy {
     return this
   }
 
-/**
- * Find one Plugin by name
- *
- * @param string name description
- */
+  /**
+   * Find one Plugin by name
+   *
+   * @param string name description
+   */
   getPlugin (name) {
     let foundPlugin = false
     this.iteratePlugins((plugin) => {
@@ -408,22 +408,22 @@ class Uppy {
     return foundPlugin
   }
 
-/**
- * Iterate through all `use`d plugins
- *
- * @param function method description
- */
+  /**
+   * Iterate through all `use`d plugins
+   *
+   * @param function method description
+   */
   iteratePlugins (method) {
     Object.keys(this.plugins).forEach((pluginType) => {
       this.plugins[pluginType].forEach(method)
     })
   }
 
-/**
- * Logs stuff to console, only if `debug` is set to true. Silent in production.
- *
- * @return {String|Object} to log
- */
+  /**
+   * Logs stuff to console, only if `debug` is set to true. Silent in production.
+   *
+   * @return {String|Object} to log
+   */
   log (msg, type) {
     if (!this.opts.debug) {
       return
@@ -457,10 +457,10 @@ class Uppy {
   //   })
   // }
 
-/**
- * Initializes actions, installs all plugins (by iterating on them and calling `install`), sets options
- *
- */
+  /**
+   * Initializes actions, installs all plugins (by iterating on them and calling `install`), sets options
+   *
+   */
   run () {
     this.log('Core is run, initializing actions...')
 
