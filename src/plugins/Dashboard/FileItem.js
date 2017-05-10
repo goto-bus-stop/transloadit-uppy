@@ -20,7 +20,10 @@ module.exports = function fileItem (props) {
   const isPaused = file.isPaused || false
 
   const fileName = getFileNameAndExtension(file.meta.name)[0]
-  const truncatedFileName = props.isWide ? truncateString(fileName, 15) : fileName
+  const extension = file.extension ? `.${file.extension}` : ''
+  const truncatedFileName = props.isWide
+    ? truncateString(fileName, 15 - extension.length) + extension
+    : fileName
 
   return html`<li class="UppyDashboardItem
                         ${uploadInProgress ? 'is-inprogress' : ''}
@@ -81,12 +84,12 @@ module.exports = function fileItem (props) {
         </div>
       </div>
     <div class="UppyDashboardItem-info">
-      <h4 class="UppyDashboardItem-name" title="${fileName}">
+      <h4 class="UppyDashboardItem-name" title="${fileName + extension}">
         ${file.uploadURL
           ? html`<a href="${file.uploadURL}" target="_blank">
-              ${file.extension ? truncatedFileName + '.' + file.extension : truncatedFileName}
+              ${truncatedFileName}
             </a>`
-          : file.extension ? truncatedFileName + '.' + file.extension : truncatedFileName
+          : truncatedFileName
         }
       </h4>
       <div class="UppyDashboardItem-status">
