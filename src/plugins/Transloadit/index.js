@@ -90,7 +90,14 @@ module.exports = class Transloadit extends Plugin {
         })
         // Add assembly-specific Tus endpoint.
         const tus = Object.assign({}, file.tus, {
-          endpoint: assembly.tus_url
+          endpoint: assembly.tus_url,
+          fingerprint: (file) => [
+            'transloadit',
+            assembly.assembly_id,
+            file.name,
+            file.type,
+            file.size
+          ].join('-')
         })
         const transloadit = {
           assembly: assembly.assembly_id
