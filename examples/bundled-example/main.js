@@ -1,24 +1,24 @@
-const Uppy = require('../../src/core/Core.js')
-const Dashboard = require('../../src/plugins/Dashboard')
-const GoogleDrive = require('../../src/plugins/GoogleDrive')
-const Dropbox = require('../../src/plugins/Dropbox')
-const Instagram = require('../../src/plugins/Instagram')
-const Webcam = require('../../src/plugins/Webcam')
-const Tus10 = require('../../src/plugins/Tus10')
-// const Multipart = require('../../src/plugins/Multipart')
-// const DragDrop = require('../../src/plugins/FileInput')
-// const FileInput = require('../../src/plugins/FileInput')
-const MetaData = require('../../src/plugins/MetaData')
-// const Informer = require('../../src/plugins/Informer')
-// const StatusBar = require('../../src/plugins/StatusBar')
-// const DragDrop = require('../../src/plugins/DragDrop')
+const Uppy = require('uppy/lib/core')
+const Dashboard = require('uppy/lib/plugins/Dashboard')
+const GoogleDrive = require('uppy/lib/plugins/GoogleDrive')
+const Dropbox = require('uppy/lib/plugins/Dropbox')
+const Instagram = require('uppy/lib/plugins/Instagram')
+const Webcam = require('uppy/lib/plugins/Webcam')
+const Tus10 = require('uppy/lib/plugins/Tus10')
+// const Multipart = require('uppy/lib/plugins/Multipart')
+// const DragDrop = require('uppy/lib/plugins/FileInput')
+// const FileInput = require('uppy/lib/plugins/FileInput')
+const MetaData = require('uppy/lib/plugins/MetaData')
+// const Informer = require('uppy/lib/plugins/Informer')
+// const StatusBar = require('uppy/lib/plugins/StatusBar')
+// const DragDrop = require('uppy/lib/plugins/DragDrop')
 
 const PROTOCOL = location.protocol === 'https:' ? 'https' : 'http'
 const TUS_ENDPOINT = PROTOCOL + '://master.tus.io/files/'
 
-// import ru_RU from '../../src/locales/ru_RU.js'
-// import MagicLog from '../../src/plugins/MagicLog'
-// import PersistentState from '../../src/plugins/PersistentState'
+// import ru_RU from 'uppy/lib/locales/ru_RU.js'
+// import MagicLog from 'uppy/lib/plugins/MagicLog'
+// import PersistentState from 'uppy/lib/plugins/PersistentState'
 
 const uppy = Uppy({
   debug: true,
