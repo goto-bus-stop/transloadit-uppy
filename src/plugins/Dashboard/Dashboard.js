@@ -1,4 +1,5 @@
 const html = require('yo-yo')
+const onload = require('on-load')
 const FileList = require('./FileList')
 const Tabs = require('./Tabs')
 const FileCard = require('./FileCard')
@@ -43,7 +44,7 @@ module.exports = function Dashboard (props) {
     })
   }
 
-  return html`
+  return onload(html`
     <div class="Uppy UppyTheme--default UppyDashboard
                           ${isTouchDevice() ? 'Uppy--isTouchDevice' : ''}
                           ${props.semiTransparent ? 'UppyDashboard--semiTransparent' : ''}
@@ -54,8 +55,7 @@ module.exports = function Dashboard (props) {
                        ? props.i18n('dashboardWindowTitle')
                        : props.i18n('dashboardTitle')}"
           role="dialog"
-          onpaste=${handlePaste}
-          onload=${() => props.updateDashboardElWidth()}>
+          onpaste=${handlePaste}>
 
     <div class="UppyDashboard-overlay" onclick=${props.handleClickOutside}></div>
 
@@ -151,5 +151,5 @@ module.exports = function Dashboard (props) {
       </div>
     </div>
   </div>
-  `
+  `, () => props.updateDashboardElWidth())
 }

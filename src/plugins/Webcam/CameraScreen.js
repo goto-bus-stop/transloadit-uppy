@@ -1,4 +1,5 @@
 const html = require('yo-yo')
+const onload = require('on-load')
 const SnapshotButton = require('./SnapshotButton')
 const RecordButton = require('./RecordButton')
 
@@ -24,14 +25,8 @@ module.exports = (props) => {
 
   const shouldShowSnapshotButton = isModeAvailable(props.modes, 'picture')
 
-  return html`
-    <div class="UppyWebcam-container" onload=${(el) => {
-      props.onFocus()
-      const recordButton = el.querySelector('.UppyWebcam-recordButton')
-      if (recordButton) recordButton.focus()
-    }} onunload=${(el) => {
-      props.onStop()
-    }}>
+  return onload(html`
+    <div class="UppyWebcam-container">
       <div class='UppyWebcam-videoContainer'>
         ${video}
       </div>
@@ -41,5 +36,11 @@ module.exports = (props) => {
       </div>
       <canvas class="UppyWebcam-canvas" style="display: none;"></canvas>
     </div>
-  `
+  `, (el) => {
+    props.onFocus()
+    const recordButton = el.querySelector('.UppyWebcam-recordButton')
+    if (recordButton) recordButton.focus()
+  }, (el) => {
+    props.onStop()
+  })
 }
